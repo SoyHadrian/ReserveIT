@@ -1,0 +1,158 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+body{
+    background: url("../images/escuela.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.header{
+    background-color: #004173;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;
+}
+
+.header .logo{
+    cursor: pointer;
+}
+
+.header .logo img{
+    height: 50px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+.content{
+    display: inline-flex;
+    
+}
+
+.content .left{
+    padding-left: 0;
+    padding-right: 550px;
+    align-self: self-start;
+}
+
+.header .nav-links{
+    list-style: none;
+
+}
+
+.header .nav-links li{
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.header .nav-links a{
+    font-size: 700;
+    color: white;
+    text-decoration: none;
+
+}
+
+.header .nav-links li a:hover{
+    color: #fc6700ff;
+}
+
+.header .btn button{
+    font-weight: 700;
+    font-weight: bold;
+    color: white;
+    padding: 9px 25px;
+    background: #26A69A;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.header .btn button:hover{
+    color: #fee569ff;
+    transform: scale(1.1);
+}
+
+.content-body{
+    align-items: center;
+    padding-top: 60px;
+    padding-left: 100px;
+}
+
+/*   ESTA SECCION ES PARA LA PÁGINA DE MAS INFO   */
+.content-mas{
+    padding: 0;
+    display: flexbox;
+    align-items: center;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.caja-mas{
+    /*border-radius: 30px;*/
+    position: center;
+    background-color: white;
+    height: 640px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    text-align: center;
+    display: flexbox;
+}
+
+/*   ESTA SECCION ES PARA LA PÁGINA DE MAS INFO   */
+
+.caja{
+    border-radius: 15px;
+    position: relative;
+    width: 700px;
+    height: 500px;
+    background-color: #fc6700ff;
+    opacity: 0.9;
+    padding: 50px;
+    text-align: center;
+    display: flexbox;
+}
+
+.caja h1{
+    color: white;
+    font-size: larger;
+    padding-bottom: 45px;
+}
+
+.caja p{
+    color: white;
+    font-size: large;
+}
+
+.mas-inf{
+    position: relative;
+    display: flex;
+    padding-top: 250px;
+    padding-left: 450px;
+}
+
+.caja .btn button{
+    font-weight: 700;
+    font-weight: bold;
+    color: white;
+    padding: 9px 25px;
+    background: #26A69A;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    
+}
+
+.caja .btn button:hover{
+    color: #fee569ff;
+    transform: scale(1.1);
+}

@@ -1,0 +1,191 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+body{
+    background-color: white;
+}
+
+body h1{
+    font-size: large;
+}
+
+.header{
+    background-color: #004173;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;
+}
+
+.header .logo{
+    cursor: pointer;
+}
+
+.header .logo img{
+    height: 50px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+.content{
+    display: inline-flex;
+    
+}
+
+.content .left{
+    padding-left: 0;
+    padding-right: 550px;
+    align-self: self-start;
+}
+
+.header .nav-links{
+    list-style: none;
+
+}
+
+.header .nav-links li{
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.header .nav-links a{
+    font-size: 700;
+    color: white;
+    text-decoration: none;
+
+}
+
+.header .nav-links li a:hover{
+    color: #fc6700ff;
+}
+
+.header .btn button{
+    font-weight: 700;
+    font-weight: bold;
+    color: white;
+    padding: 9px 25px;
+    background: #26A69A;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.header .btn button:hover{
+    color: #fee569ff;
+    transform: scale(1.1);
+}
+
+.formulario{
+    padding-top: 10px;
+}
+
+.form{
+    background-image: url(../images/R.png);
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position: 20px 20px;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    width: 400px;
+    height: auto;
+    padding: 2em 3em;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px -5px rgb(0 0 0 / 100%);
+    text-align: center;
+  }
+  
+  .form_title{
+    font-family: 'Nunito', sans-serif;
+    padding-top: 30px;
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+  }
+  
+  .form_paragraph{
+    font-size: medium;
+    font-weight: 300;
+  }
+  
+  .form_link{
+    font-size: medium;
+    font-weight: 400;
+    color: #000;
+  }
+  
+  .form_container{
+    margin-top: 3em;
+    display: grid;
+    gap: 2.5rem;
+  }
+  
+  .form_group{
+    position: relative;
+    --color: #0000007e;
+  }
+  
+  .form_input{
+    width: 100%;
+    background: none;
+    color: #000000;
+    font-size: 1rem;
+    padding: 10px .3em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .form_input:not(:placeholder-shown){
+    color: #000000;
+  }
+  
+  .form_input:focus + .form_label,
+  .form_input:not(:placeholder-shown)+.form_label{
+    transform: translateY(-12px) scale(.7);
+    transform-origin: left top;
+    color: #004173;
+  }
+  
+  .form_label{
+    color: gray;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    transform: translateY(10px);
+    transition: transform .5s, color .3s;
+  }
+
+  .form_submit{
+    background: #004173;
+    color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: 1px 0;
+    border: none;
+    border-radius: .5rem;
+  }
+  
+  .form_line{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #343bc4;
+    transform: scale(0);
+    transform: left bottom;
+    transition: transform .4s;
+  }
+  
+  .form_input:focus ~ .form_line,
+  .form_input:not(:placeholder-shown) ~ .form_line{
+    transform: scale(1);
+  }

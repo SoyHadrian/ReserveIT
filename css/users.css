@@ -1,0 +1,82 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+body{
+    /*background: url("../images/escuela.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;*/
+    background-color: white;
+}
+
+.header{
+    background-color: #004173;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;
+}
+
+.header .logo{
+    cursor: pointer;
+}
+
+.header .logo img{
+    height: 50px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+.content{
+    display: inline-flex;
+    
+}
+
+.content .left{
+    padding-left: 0;
+    padding-right: 500px;
+    align-self: self-start;
+}
+
+.header .nav-links{
+    list-style: none;
+
+}
+
+.header .nav-links li{
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.header .nav-links a{
+    font-size: 700;
+    color: white;
+    text-decoration: none;
+
+}
+
+.header .nav-links li a:hover{
+    color: #fc6700ff;
+}
+
+.header .btn button{
+    font-weight: 700;
+    font-weight: bold;
+    color: white;
+    padding: 9px 25px;
+    background: #26A69A;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.header .btn button:hover{
+    color: #fee569ff;
+    transform: scale(1.1);
+}
