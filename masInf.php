@@ -18,8 +18,8 @@
             <div class="content">
                 <div class="left">
                     <ul class="nav-links">
-                        <li><a href="#">Horarios</a></li>
-                        <li><a href="#">Laboratorios</a></li>
+                        <li><a href="/pages/horarios.php">Horarios</a></li>
+                        <li><a href="/pages/laboratorios.php">Laboratorios</a></li>
                     </ul>
                 </div>
                 <div class="right">
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </nav>
-        <a href="login.php" class="btn"><button>Iniciar sesión</button></a>
+        <a href="index.php" class="btn"><button>Regresar</button></a>
     </header>
     <div class="content-mas">
         <div class="caja-mas">
