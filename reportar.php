@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReserveIT</title>
-    <link rel="stylesheet" href=../css/users.css>
+    <link rel="stylesheet" href=css/users.css>
+    <link rel="shortcut icon" href="images/R.png" type="image/x-icon">
 </head>
 
 <body>
     <header class="header">
         <div class="logo">
-            <a href="../index.php"><img src="../images/logo.png" alt="Logo de la compañía"></a>
+            <a href="index.php"><img src="images/logo.png" alt="Logo de la compañía"></a>
         </div>
         <nav>
             <div class="content">

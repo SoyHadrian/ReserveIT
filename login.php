@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReserveIT</title>
     <link rel="stylesheet" href=css/style2.css>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    <link rel="shortcut icon" href="images/R.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     </script>
 </head>
 
@@ -21,31 +20,37 @@
         </div>
         <a href="index.php" class="btn"><button>Regresar</button></a>
     </header>
-    <div class="formulario">
-        <form class="form" action="" method="post">
-            <h2 class="form_title">Iniciar sesión</h2>
+    <nav class="navbar navbar-light justify-content-center fs-2 mb-3"
+        style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">
+        Iniciar sesión
+    </nav>
+    <div class="container">
+        <div class="text-center">
+            <p class="muted" style="font-family: Arial, Helvetica, sans-serif;">Ingresa los datos requeridos</p>
+        </div>
 
-            <?php
-            include("resources/db.php");
-            include("resources/controller.php");
-            ?>
+        <div class="container d-flex justify-content-center">
+            <form action="" method="post" style="width: 500px; min-width: 300px;">
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label">Nombre de usuario o correo institucional:</label>
+                        <input type="text" class="form-control" name="usuario" placeholder="usuario">
+                    </div>
+                </div>                
+                <div class="mb-3">
+                    <label class="form-label">Contraseña:</label>
+                    <input type="text" class="form-control" name="clave" placeholder="contraseña">
+                </div>
 
-            <div class="form_container">
-                <div class="form_group">
-                    <input type="email" id="email" class="form_input" placeholder=" " name="usuario">
-                    <label for="email" class="form_label">Correo</label>
-                    <span class="form_line"></span>
+                <div>
+                    <button type="submit" class="btn btn-success" name="submit">Iniciar sesión</button>
+                    <a href="registrar.php" class="btn btn-danger">Registrarme</a>
                 </div>
-                <div class="form_group">
-                    <input type="password" id="pass" class="form_input" placeholder=" " name="pass">
-                    <label for="pass" class="form_label">Contraseña</label>
-                    <span class="form_line"></span>
-                    <!-- <img src="images/eye.png" class="showIcon" id="eye"> Icono para mostrar contraseña, no me quedó jsjs-->
-                </div>
-                <input type="submit" class="form_submit" value="Ingresar" name="btningresar">
-                <p class="form_paragraph">¿No tienes una cuenta? <a href="registrar.php" class="form_link">Entra aquí</a></p>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
 </body>

@@ -29,17 +29,11 @@ body{
     transition: all 0.3s;
 }
 
-.content{
-    display: inline-flex;
-}
-
 .header .nav-links{
-    padding-top: 20px;
     list-style: none;
 }
 
 .header .nav-links li{
-    display: inline-block;
     padding: 10px 80px;
 }
 
@@ -47,6 +41,7 @@ body{
     font-size: 700;
     color: white;
     text-decoration: none;
+
 }
 
 .header .nav-links li a:hover{
@@ -69,35 +64,6 @@ body{
     transform: scale(1.1);
 }
 
-.content2{
-    background-color: #fc6700ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    padding: 10px 20%;
-}
-
-.content2 .nav-links{
-    padding-top: 20px;
-    list-style: none;
-}
-
-.content2 .nav-links li{
-    display: inline-block;
-    padding: 10px 50px;
-}
-
-.content2 .nav-links a{
-    font-size: 700;
-    color: white;
-    text-decoration: none;
-}
-
-.content2 .nav-links li a:hover{
-    color: black;
-}
-
-.container{
-    padding-top: 30px;
+.content{
+    padding-top: 25px;
 }

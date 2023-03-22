@@ -6,7 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReserveIT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="shortcut icon" href="../ images/R.png" type="image/x-icon">
 </head>
 
 <body>
@@ -17,13 +21,78 @@
         <nav>
             <div class="content">
                 <ul class="nav-links">
-                    <li><a href="horarios.php">Horarios</a></li>
-                    <li><a href="laboratorios.php">Laboratorios</a></li>
-                    <li><a href="usuarios.php">Usuarios</a></li>
+                    <li><a>Usuarios</a></li>
+                    <li><a>Nombre completo de usuario</a></li>
                 </ul>
             </div>
         </nav>
-        <a href="admin.php" class="btn"><button>Regresar</button></a>
+        <a href="#" class="btn"><button>Cerrar sesión</button></a>
     </header>
+    <div class="content2">
+        <ul class="nav-links">
+            <li><a href="horarios.php">Horarios</a></li>
+            <li><a href="laboratorios.php">Laboratorios</a></li>
+            <li><a href="usuarios.php">Usuarios</a></li>
+            <li><a href="reportes.php">Reportes</a></li>
+        </ul>
+    </div>
 
+    <div class="container">
+
+        <?php 
+            if(isset($_GET['msg'])){
+                $msg = $_GET['msg'];
+                echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                '.$msg.'
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
+            }
+        ?>
+        <a href="../resources/add_user.php" class="btn btn-dark mb-3 fs-6">Agregar usuario</a>
+
+        <table class="table table-hover text-center fs-6">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Contraseña</th>
+                    <th scope="col">Rol</th>
+                    <th scope="col">Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    include "../resources/db_connection.php";
+                    $sql = "SELECT * FROM `usuario`";
+                    $result = mysqli_query($connection, $sql);
+                    while ($row = mysqli_fetch_assoc($result)){
+                        ?>
+
+                        <tr>
+                            <td><?php echo $row['id'] ?></td>
+                            <td><?php echo $row['nombre'] ?></td>
+                            <td><?php echo $row['usuario'] ?></td>
+                            <td><?php echo $row['correo'] ?></td>
+                            <td><?php echo $row['clave'] ?></td>
+                            <td><?php echo $row['rol'] ?></td>
+                            <td>
+                                <a href="../resources/edit_user.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="bi bi-pencil-square"></i></a>
+                                <a href="../resources/delete_user.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="bi bi-trash-fill"></i></a>
+                            </td>
+                        </tr>
+
+                <?php
+                    }
+
+                ?>
+            </tbody>
+        </table>
+
+    </div>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
 </body>
