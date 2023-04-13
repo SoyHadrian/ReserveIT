@@ -10,7 +10,7 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/admin.css">
-    <link rel="shortcut icon" href="../ images/R.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/R.png" type="image/x-icon">
 </head>
 
 <body>
@@ -37,7 +37,7 @@
         </ul>
     </div>
 
-    <div class="container">
+    <div class="contenedor">
 
         <?php 
             if(isset($_GET['msg'])){
@@ -51,7 +51,7 @@
         <a href="../resources/add_user.php" class="btn btn-dark mb-3 fs-6">Agregar usuario</a>
 
         <table class="table table-hover text-center fs-6">
-            <thead class="table-dark">
+            <thead class="table-dark" style="vertical-align: middle;">
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
@@ -70,18 +70,20 @@
                     while ($row = mysqli_fetch_assoc($result)){
                         ?>
 
-                        <tr>
-                            <td><?php echo $row['id'] ?></td>
-                            <td><?php echo $row['nombre'] ?></td>
-                            <td><?php echo $row['usuario'] ?></td>
-                            <td><?php echo $row['correo'] ?></td>
-                            <td><?php echo $row['clave'] ?></td>
-                            <td><?php echo $row['rol'] ?></td>
-                            <td>
-                                <a href="../resources/edit_user.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="bi bi-pencil-square"></i></a>
-                                <a href="../resources/delete_user.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="bi bi-trash-fill"></i></a>
-                            </td>
-                        </tr>
+                <tr>
+                    <td><?php echo $row['id'] ?></td>
+                    <td><?php echo $row['nombre'] ?></td>
+                    <td><?php echo $row['usuario'] ?></td>
+                    <td><?php echo $row['correo'] ?></td>
+                    <td><?php echo $row['clave'] ?></td>
+                    <td><?php echo $row['rol'] ?></td>
+                    <td>
+                        <a href="../resources/edit_user.php?id=<?php echo $row['id'] ?>" class="link-dark"><i
+                                class="bi bi-pencil-square"></i></a>
+                        <a href="../resources/delete_user.php?id=<?php echo $row['id'] ?>" class="link-dark"><i
+                                class="bi bi-trash-fill"></i></a>
+                    </td>
+                </tr>
 
                 <?php
                     }
@@ -96,3 +98,5 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
 </body>
+
+</html>

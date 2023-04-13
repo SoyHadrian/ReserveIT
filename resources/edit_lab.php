@@ -3,17 +3,15 @@ include "db_connection.php";
 $id = $_GET['id'];
 if(isset($_POST['submit'])){
     $nombre = $_POST['nombre'];
-    $usuario = $_POST['usuario'];
-    $correo = $_POST['correo'];
-    $clave = $_POST['clave'];
-    $rol = $_POST['rol'];
+    $edificio = $_POST['edificio'];
+    $descripcion = $_POST['descripcion'];
 
-    $sql = "UPDATE `usuario` SET `nombre`='$nombre',`correo`='$correo',`usuario`='$usuario',`clave`='$clave',`rol`='$rol' WHERE id = $id";
+    $sql = "UPDATE `laboratorio` SET `nombre`='$nombre',`edificio`='$edificio',`descripcion`='$descripcion' WHERE id = $id";
 
     $result = mysqli_query($connection, $sql);
 
     if($result){
-        header("Location: ../pages/usuarios.php?msg=Usuario actualizado");
+        header("Location: ../pages/laboratorios.php?msg=Laboratorio actualizado");
     }else{
         echo "Failed: " . mysqli_error($connection);
     }
@@ -46,60 +44,54 @@ if(isset($_POST['submit'])){
                 </ul>
             </div>
         </nav>
-        <a href="../pages/usuarios.php" class="btn"><button>Cancelar</button></a>
+        <a href="../pages/laboratorios.php" class="btn"><button>Regresar</button></a>
     </header>
     <nav class="navbar navbar-light justify-content-center fs-2 mb-3"
         style=" font-family: Arial, Helvetica, sans-serif; font-size: 30px; font-weight: bold;">
-        Editar usuario
+        Agregar laboratorio
     </nav>
 
     <div class="container">
         <?php 
-                $sql = "SELECT * FROM `usuario` WHERE id = $id LIMIT 1";
+                $sql = "SELECT * FROM `laboratorio` WHERE id = $id LIMIT 1";
                 $result = mysqli_query($connection, $sql);
                 $row =  mysqli_fetch_assoc($result);
             ?>
+        <div class="text-center">
+            <p class="muted" style="font-family: Arial, Helvetica, sans-serif;">Ingresa los datos del nuevo laboratorio
+            </p>
+        </div>
 
         <div class="container d-flex justify-content-center">
             <form action="" method="post" style="width: 1000px; min-width: 300px;">
                 <div class="row mb-3">
                     <div class="col">
-                        <label class="form-label">Nombre completo:</label>
+                        <label class="form-label">Nombre de laboratorio:</label>
                         <input type="text" class="form-control" name="nombre" value="<?php echo $row['nombre'] ?>">
                     </div>
 
                     <div class="col">
-                        <label class="form-label">Nombre de usuario:</label>
-                        <input type="text" class="form-control" name="usuario" value="<?php echo $row['usuario'] ?>">
+                        <div class="mb-3">
+                            <label class="form-label">Edificio:</label>
+                            <select name="edificio" class="form-select">
+                                <option selected><?php echo $row['edificio'] ?></option>
+                                <option value="" disabled>----------</option>
+                                <option value="Edificio E">Edificio E</option>
+                                <option value="Edificio D">Edificio D</option>
+                            </select>
+                        </div>
                     </div>
+
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Correo institucional:</label>
-                    <input type="text" class="form-control" name="correo" value="<?php echo $row['correo'] ?>">
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Contraseña:</label>
-                    <input type="text" class="form-control" name="clave" value="<?php echo $row['clave'] ?>">
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Rol de usuario:</label>
-
-                    <select name="rol" class="form-select">
-                        <option selected><?php echo $row['rol'] ?></option>
-                        <option disabled>----------</option>
-                        <option value="Administrador">Administrador</option>
-                        <option value="Prestante de servicio social">Prestante de servicio social</option>
-                        <option value="Profesor">Profesor</option>
-                        <option value="Alumno">Alumno</option>
-                    </select>
-
+                    <label class="form-label">Descripción:</label>
+                    <input type="text" class="form-control" name="descripcion"
+                        value="<?php echo $row['descripcion'] ?>">
                 </div>
 
                 <div>
                     <button type="submit" class="btn btn-success" name="submit">Editar</button>
-                    <a href="../pages/usuarios.php" class="btn btn-danger">Cancelar</a>
+                    <a href="../pages/laboratorios.php" class="btn btn-danger">Cancelar</a>
                 </div>
             </form>
         </div>

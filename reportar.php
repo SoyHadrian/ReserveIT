@@ -28,5 +28,7 @@
         </nav>
         <a href="admin.php" class="btn"><button>Regresar</button></a>
     </header>
-    
+
 </body>
+
+</html>

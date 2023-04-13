@@ -17,19 +17,20 @@
         </div>
         <nav>
             <div class="content">
-                    <ul class="nav-links">
-                        <li><a>Nombre completo de usuario</a></li>
-                    </ul>
+                <ul class="nav-links">
+                    <li><a>Nombre completo de usuario</a></li>
+                </ul>
             </div>
         </nav>
         <a href="#" class="btn"><button>Cerrar sesión</button></a>
     </header>
     <div class="content2">
-            <ul class="nav-links">
-                        <li><a href="horarios.php">Horarios</a></li>
-                        <li><a href="laboratorios.php">Laboratorios</a></li>
-                        <li><a href="usuarios.php">Usuarios</a></li>
-                        <li><a href="reportes.php">Reportes</a></li>
-                    </ul>
-            </div>
+        <ul class="nav-links">
+            <li><a href="horarios.php">Horarios</a></li>
+            <li><a href="laboratorios.php">Laboratorios</a></li>
+            <li><a href="usuarios.php">Usuarios</a></li>
+            <li><a href="reportes.php">Reportes</a></li>
+        </ul>
+    </div>
 </body>
+</html>
