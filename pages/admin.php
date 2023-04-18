@@ -22,7 +22,7 @@
                 </ul>
             </div>
         </nav>
-        <a href="#" class="btn"><button>Cerrar sesión</button></a>
+        <a href="#" class="btn btn-rounded"><button>Cerrar sesión</button></a>
     </header>
     <div class="content2">
         <ul class="nav-links">

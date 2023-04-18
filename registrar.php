@@ -34,12 +34,12 @@
                 <div class="row mb-3">
                     <div class="col">
                         <label class="form-label">Nombre completo:</label>
-                        <input type="text" class="form-control" name="nombre" placeholder="nombre">
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre">
                     </div>
 
                     <div class="col">
                         <label class="form-label">Nombre de usuario:</label>
-                        <input type="text" class="form-control" name="usuario" placeholder="usuario">
+                        <input type="text" class="form-control" name="usuario" placeholder="Usuario">
                     </div>
                 </div>
                 <div class="mb-3">
@@ -49,17 +49,17 @@
 
                 <div class="mb-3">
                     <label class="form-label">Contraseña:</label>
-                    <input type="text" class="form-control" name="clave" placeholder="contraseña">
+                    <input type="text" class="form-control" name="clave" placeholder="Contraseña">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Repetir contraseña:</label>
-                    <input type="text" class="form-control" name="clave" placeholder="contraseña">
+                    <input type="text" class="form-control" name="clave" placeholder="Contraseña">
                 </div>
 
-                <div>
+                <div class="button-container">
                     <button type="submit" class="btn btn-success" name="submit">Registrarme</button>
-                    <a href="../pages/admin.php" class="btn btn-danger">Cancelar</a>
+                    <a href="pages/admin.php" class="btn btn-danger">Cancelar</a>
                 </div>
             </form>
         </div>

@@ -18,7 +18,7 @@
         <div class="logo">
             <a href="index.php"><img src="images/logo.png" alt="Logo de la compañía"></a>
         </div>
-        <a href="index.php" class="btn"><button>Regresar</button></a>
+        <a href="index.php" class="btn btn-rounded"><button>Regresar</button></a>
     </header>
     <nav class="navbar navbar-light justify-content-center fs-2 mb-3"
         style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">
@@ -34,15 +34,15 @@
                 <div class="row mb-3">
                     <div class="col">
                         <label class="form-label">Nombre de usuario o correo institucional:</label>
-                        <input type="text" class="form-control" name="usuario" placeholder="usuario">
+                        <input type="text" class="form-control" name="usuario" placeholder="Usuario">
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Contraseña:</label>
-                    <input type="text" class="form-control" name="clave" placeholder="contraseña">
+                    <input type="text" class="form-control" name="clave" placeholder="Contraseña">
                 </div>
 
-                <div>
+                <div class="button-container">
                     <button type="submit" class="btn btn-success" name="submit">Iniciar sesión</button>
                     <a href="registrar.php" class="btn btn-danger">Registrarme</a>
                 </div>

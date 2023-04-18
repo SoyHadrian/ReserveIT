@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <header class="header">
+    <header class="header align-items-center">
         <div class="logo">
             <a href="index.php"><img src="images/logo.png" alt="Logo de la compañía"></a>
         </div>
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </nav>
-        <a href="login.php" class="btn"><button>Iniciar sesión</button></a>
+        <a href="login.php" class="btn"><button class="btn btn-rounded">Iniciar sesión</button></a>
     </header>
     <div class="content-body">
         <div class="caja">
