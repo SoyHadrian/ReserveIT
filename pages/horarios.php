@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(empty($_SESSION["id"])){
+    header("location: index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +29,7 @@
                 </ul>
             </div>
         </nav>
-        <a href="#" class="btn"><button>Cerrar sesión</button></a>
+        <a href="../resources/controler_close_session.php" class="btn"><button class="btn btn-rounded">Cerrar sesión</button></a>
     </header>
     <div class="content2">
         <ul class="nav-links">

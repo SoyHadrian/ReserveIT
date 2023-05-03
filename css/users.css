@@ -34,14 +34,16 @@ body{
 }
 
 .content{
+    padding-top: 20px;
     display: inline-flex;
-    
 }
 
-.content .left{
-    padding-left: 0;
+.content .lefts{
     padding-right: 500px;
-    align-self: self-start;
+}
+
+.content .rights{
+    padding-left: 50px;
 }
 
 .header .nav-links{
@@ -74,6 +76,8 @@ body{
     border: none;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+    padding: 10px 20px;
+    border-radius: 10px;
 }
 
 .header .btn button:hover{

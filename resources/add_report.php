@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(empty($_SESSION["id"])){
+    header("location: index.php");
+}
+?>
 <?php
 include "db_connection.php";
 
@@ -7,7 +13,7 @@ if(isset($_POST['submit'])){
     $reporta = $_POST['reporta']; 
     $laboratorio = $_POST['laboratorio'];
     $descripcion = $_POST['descripcion'];
-    $fecha = $_POST['fecha'];  
+    $fecha = date('Y-m-d');  
 
     $sql = "INSERT INTO `reporte`(`id`, `titulo`, `edificio`, `reporta`, `laboratorio`, `descripcion`, `fecha`)
     VALUES (NULL, '$titulo', '$edificio', '$reporta', '$laboratorio', '$descripcion', '$fecha')";
@@ -39,7 +45,7 @@ if(isset($_POST['submit'])){
 <body>
     <header class="header">
         <div class="logo">
-            <a href="../index.php"><img src="../images/logo.png" alt="Logo de la compañía"></a>
+            <a><img src="../images/logo.png" alt="Logo de la compañía"></a>
         </div>
         <nav>
             <div class="content">
@@ -48,7 +54,7 @@ if(isset($_POST['submit'])){
                 </ul>
             </div>
         </nav>
-        <a href="../pages/laboratorios.php" class="btn"><button>Regresar</button></a>
+        <a href="../pages/reportes.php" class="btn"><button class="btn btn-rounded">Regresar</button></a>
     </header>
     <nav class="navbar navbar-light justify-content-center fs-2 mb-3"
         style=" font-family: Arial, Helvetica, sans-serif; font-size: 30px; font-weight: bold;">
@@ -118,10 +124,6 @@ if(isset($_POST['submit'])){
                     <input type="" class="form-control" name="descripcion" placeholder="Descripcion">
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Fecha de reporte:</label>
-                    <input type="date" id="fecha" name="fecha">
-                </div>
                 <div>
                     <button type="submit" class="btn btn-success" name="submit">Agregar</button>
                     <a href="../pages/reportes.php" class="btn btn-danger">Cancelar</a>

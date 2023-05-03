@@ -30,7 +30,7 @@
                 </div>
             </div>
         </nav>
-        <a href="index.php" class="btn"><button>Regresar</button></a>
+        <aclass="btn"><button class="btn btn-rounded">Regresar</button></a>
     </header>
     <div class="content-mas">
         <div class="caja-mas">

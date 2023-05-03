@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(empty($_SESSION["id"])){
+    header("location: index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,17 +22,17 @@
 <body>
     <header class="header">
         <div class="logo">
-            <a href="../index.php"><img src="../images/logo.png" alt="Logo de la compañía"></a>
+            <a href="../pages/admin.php"><img src="../images/logo.png" alt="Logo de la compañía"></a>
         </div>
         <nav>
             <div class="content">
                 <ul class="nav-links">
                     <li><a>Usuarios</a></li>
-                    <li><a>Nombre completo de usuario</a></li>
+                    <li><a><?php echo $_SESSION["nombre"] ?></a></li>
                 </ul>
             </div>
         </nav>
-        <a href="#" class="btn"><button>Cerrar sesión</button></a>
+        <a href="../resources/controler_close_session.php" class="btn"><button class="btn btn-rounded">Cerrar sesión</button></a>
     </header>
     <div class="content2">
         <ul class="nav-links">

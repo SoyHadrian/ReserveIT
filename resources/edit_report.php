@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(empty($_SESSION["id"])){
+    header("location: index.php");
+}
+?>
 <?php
 include "db_connection.php";
 $id = $_GET['id'];
@@ -38,7 +44,7 @@ if(isset($_POST['submit'])){
 <body>
     <header class="header">
         <div class="logo">
-            <a href="../index.php"><img src="../images/logo.png" alt="Logo de la compañía"></a>
+            <a><img src="../images/logo.png" alt="Logo de la compañía"></a>
         </div>
         <nav>
             <div class="content">
@@ -47,7 +53,7 @@ if(isset($_POST['submit'])){
                 </ul>
             </div>
         </nav>
-        <a href="../pages/reportes.php" class="btn"><button>Regresar</button></a>
+        <a href="../pages/reportes.php" class="btn"><button class="btn btn-rounded">Regresar</button></a>
     </header>
     <nav class="navbar navbar-light justify-content-center fs-2 mb-3"
         style=" font-family: Arial, Helvetica, sans-serif; font-size: 30px; font-weight: bold;">

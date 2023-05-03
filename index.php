@@ -19,8 +19,8 @@
             <div class="content">
                 <div class="left">
                     <ul class="nav-links">
-                        <li><a href="pages/horarios.php">Horarios</a></li>
-                        <li><a href="pages/laboratorios.php">Laboratorios</a></li>
+                        <li><a href="horario.php">Horarios</a></li>
+                        <li><a href="labs.php">Laboratorios</a></li>
                     </ul>
                 </div>
                 <div class="right">
@@ -30,14 +30,14 @@
                 </div>
             </div>
         </nav>
-        <a href="login.php" class="btn"><button class="btn btn-rounded">Iniciar sesión</button></a>
+        <a href="login.php" class="btn" style="text-decoration: none;"><button class="btn btn-rounded">Iniciar sesión</button></a>
     </header>
     <div class="content-body">
         <div class="caja">
             <h1>ReserveIT</h1>
             <p>ReserveIT es un sistema de gestión de laboratorios que permite a los usuarios registrar incidencias.</p>
             <div class="mas-inf">
-                <a href="masInf.php" class="btn"><button>Más info</button></a>
+                <a href="masInf.php" class="btn" style="text-decoration: none;"><button class="btn btn-rounded">Más info</button></a>
             </div>
         </div>
     </div>

@@ -17,18 +17,14 @@
         <div class="logo">
             <a href="index.php"><img src="images/logo.png" alt="Logo de la compañía"></a>
         </div>
-        <a href="index.php" class="btn"><button>Regresar</button></a>
+        <a href="login.php" class="btn"><button class="btn btn-rounded">Regresar</button></a>
     </header>
     <nav class="navbar navbar-light justify-content-center fs-2 mb-4"
         style="font-family: Arial, Helvetica, sans-serif; font-size: 30px; font-weight: bold;">
-        Registrarme
+        Registro
     </nav>
 
     <div class="container">
-        <div class="text-center">
-            <p class="muted" style="font-family: Arial, Helvetica, sans-serif;">Ingresa tus datos correctamente</p>
-        </div>
-
         <div class="container d-flex justify-content-center">
             <form action="" method="post" style="width: 700px; min-width: 300px;">
                 <div class="row mb-3">
@@ -59,7 +55,7 @@
 
                 <div class="button-container">
                     <button type="submit" class="btn btn-success" name="submit">Registrarme</button>
-                    <a href="pages/admin.php" class="btn btn-danger">Cancelar</a>
+                    <a href="login.php" class="btn btn-danger">Cancelar</a>
                 </div>
             </form>
         </div>

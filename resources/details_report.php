@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(empty($_SESSION["id"])){
+    header("location: index.php");
+}
+?>
 <?php
 include "db_connection.php";
 $id = $_GET['id'];
@@ -28,7 +34,7 @@ $id = $_GET['id'];
                 </ul>
             </div>
         </nav>
-        <a href="../pages/laboratorios.php" class="btn"><button>Regresar</button></a>
+        <a href="../pages/laboratorios.php" class="btn"><button class="btn btn-rounded">Regresar</button></a>
     </header>
     <nav class="navbar navbar-light justify-content-center fs-2 mb-3"
         style=" font-family: Arial, Helvetica, sans-serif; font-size: 30px; font-weight: bold;">
