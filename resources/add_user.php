@@ -1,29 +1,35 @@
 <?php 
 session_start();
 if(empty($_SESSION["id"])){
-    header("location: index.php");
+    header("location: ../index.php");
 }
-?>
-<?php
+
 include "db_connection.php";
 
 if(isset($_POST['submit'])){
-    $nombre = $_POST['nombre'];
-    $usuario = $_POST['usuario'];
-    $correo = $_POST['correo'];
-    $clave = $_POST['clave'];
-    $rol = $_POST['rol'];
+        $correo = $_POST['correo'];
+    if (!preg_match('/^[a-z][0-9]{8,9}@queretaro\.tecnm\.mx$/', $correo)) {
+        header("Location: add_user.php?msg=Correo inválido");
+      }else if(!preg_match('/^[a-z][0-9]{8,9}@queretaro\.tecnm\.mx$/', $correo)){
+        header("Location: ../pages/usuarios.php?msg=Correo inválido");
+      }else{        
+        $nombre = $_POST['nombre'];
+        $usuario = $_POST['usuario'];
+        $clave = $_POST['clave'];
+        $rol = $_POST['rol'];
+        $nocontrol = $_POST['nocontrol'];
 
-    $sql = "INSERT INTO `usuario`(`id`, `nombre`, `usuario`, `correo`, `clave`, `rol`)
-    VALUES (NULL, '$nombre', '$usuario', '$correo', '$clave', '$rol')";
-
-    $result = mysqli_query($connection, $sql);
-
-    if($result){
-        header("Location: ../pages/usuarios.php?msg=Nuevo usuario creado");
-    }else{
-        echo "Failed: " . mysqli_error($connection);
-    }
+        $sql = "INSERT INTO `usuario`(`id`, `nombre`, `usuario`, `correo`, `clave`, `rol`, `nocontrol`)
+        VALUES (NULL, '$nombre', '$usuario', '$correo', '$clave', '$rol', '$nocontrol')";
+        
+        $result = mysqli_query($connection, $sql);
+    
+        if($result){
+            header("Location: ../pages/usuarios.php?msg=Nuevo usuario creado");
+        }else{
+            echo "Failed: " . mysqli_error($connection);
+        }
+      }
 }
 
 ?>
@@ -49,18 +55,28 @@ if(isset($_POST['submit'])){
         <nav>
             <div class="content">
                 <ul class="nav-links">
-                    <li><a>Nombre completo de usuario</a></li>
+                    <li><a><?php echo $_SESSION["nombre"] ?></a></li>
                 </ul>
             </div>
         </nav>
         <a href="../pages/usuarios.php" class="btn"><button class="btn btn-rounded">Cancelar</button></a>
     </header>
+
+    <?php 
+            if(isset($_GET['msg'])){
+                $msg = $_GET['msg'];
+                echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                '.$msg.'
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
+            }
+        ?>
     <nav class="navbar navbar-light justify-content-center fs-2 mb-3"
         style=" font-family: Arial, Helvetica, sans-serif; font-size: 30px; font-weight: bold;">
         Agregar usuario
     </nav>
 
-    <div class="container">
+    <div class="container col-xs-12 col-sm-12 col-md-12">
         <div class="text-center">
             <p class="muted" style="font-family: Arial, Helvetica, sans-serif;">Ingresa los datos del nuevo usuario</p>
         </div>
@@ -70,37 +86,38 @@ if(isset($_POST['submit'])){
                 <div class="row mb-3">
                     <div class="col">
                         <label class="form-label">Nombre completo:</label>
-                        <input type="text" class="form-control" name="nombre" placeholder="nombre">
+                        <input type="text" class="form-control" name="nombre" placeholder="nombre" required>
                     </div>
 
                     <div class="col">
                         <label class="form-label">Nombre de usuario:</label>
-                        <input type="text" class="form-control" name="usuario" placeholder="usuario">
+                        <input type="text" class="form-control" name="usuario" placeholder="usuario" required>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Correo institucional:</label>
-                    <input type="text" class="form-control" name="correo" placeholder="ejemplo@queretaro.tecnm.mx">
+                    <input type="text" class="form-control" name="correo" placeholder="ejemplo@queretaro.tecnm.mx" required>
                 </div>
 
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label">Número de control:</label>
+                        <input type="text" class="form-control" name="nocontrol" placeholder="Numero de control" required>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Rol de usuario:</label>
+                        <select name="rol" class="form-select" required>
+                            <option selected value="Alumno">Alumno</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Prestante de servicio social">Prestante de servicio social</option>
+                            <option value="Profesor">Profesor</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="mb-3">
                     <label class="form-label">Contraseña:</label>
-                    <input type="text" class="form-control" name="clave" placeholder="contraseña">
+                    <input type="text" class="form-control" name="clave" placeholder="contraseña" required>
                 </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Rol de usuario:</label>
-
-                    <select name="rol" class="form-select">
-                        <option selected disabled>Elegir rol de usuario</option>
-                        <option value="Administrador">Administrador</option>
-                        <option value="Prestante de servicio social">Prestante de servicio social</option>
-                        <option value="Profesor">Profesor</option>
-                        <option value="Alumno">Alumno</option>
-                    </select>
-
-                </div>
-
                 <div>
                     <button type="submit" class="btn btn-success" name="submit">Agregar</button>
                     <a href="../pages/usuarios.php" class="btn btn-danger">Cancelar</a>

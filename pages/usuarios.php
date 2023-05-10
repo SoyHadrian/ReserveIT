@@ -12,6 +12,8 @@ if(empty($_SESSION["id"])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReserveIT</title>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -43,7 +45,7 @@ if(empty($_SESSION["id"])){
         </ul>
     </div>
 
-    <div class="contenedor">
+    <div class="contenedor col-xs-12 col-sm-12 col-md-12">
 
         <?php 
             if(isset($_GET['msg'])){
@@ -56,6 +58,7 @@ if(empty($_SESSION["id"])){
         ?>
         <a href="../resources/add_user.php" class="btn btn-dark mb-3 fs-6">Agregar usuario</a>
 
+        <div class="table-responsive">
         <table class="table table-hover text-center fs-6">
             <thead class="table-dark" style="vertical-align: middle;">
                 <tr>
@@ -63,8 +66,9 @@ if(empty($_SESSION["id"])){
                     <th scope="col">Nombre</th>
                     <th scope="col">Usuario</th>
                     <th scope="col">Correo</th>
-                    <th scope="col">Contraseña</th>
+                    <th scope="col">No. control</th>
                     <th scope="col">Rol</th>
+                    <th scope="col">Contraseña</th>
                     <th scope="col">Accion</th>
                 </tr>
             </thead>
@@ -81,8 +85,9 @@ if(empty($_SESSION["id"])){
                     <td><?php echo $row['nombre'] ?></td>
                     <td><?php echo $row['usuario'] ?></td>
                     <td><?php echo $row['correo'] ?></td>
-                    <td><?php echo $row['clave'] ?></td>
+                    <td><?php echo $row['nocontrol'] ?></td>
                     <td><?php echo $row['rol'] ?></td>
+                    <td><?php echo $row['clave'] ?></td>
                     <td>
                         <a href="../resources/edit_user.php?id=<?php echo $row['id'] ?>" class="link-dark"><i
                                 class="bi bi-pencil-square"></i></a>
@@ -97,6 +102,13 @@ if(empty($_SESSION["id"])){
                 ?>
             </tbody>
         </table>
+        </div>
+        <form method="post" action="../resources/procesar.php" enctype="multipart/form-data">
+            <div class="mb-3" style="display: flex; padding: 10px;">
+                <input type="file" name="archivo" class="form-control" style="width: 500px;">
+                <input type="submit" value="Subir archivo" class="btn btn-success">
+            </div>
+        </form>
 
     </div>
     <!-- Bootstrap -->

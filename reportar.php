@@ -9,7 +9,7 @@ include "resources/db_connection.php";
 
 if(isset($_POST['submit'])){
     $titulo = $_POST['titulo'];
-    $edificio = $_POST['edificio']; 
+    $edificio = $_POST['edificio'];
     $reporta = $_SESSION['nombre']; 
     $laboratorio = $_POST['laboratorio'];
     $descripcion = $_POST['descripcion'];

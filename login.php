@@ -33,7 +33,7 @@
             <form method="post" action="">
                 <div class="row mb-3">
                     <div class="col">
-                        <label class="form-label">Nombre de usuario o correo institucional:</label>
+                        <label class="form-label">Usuario o correo institucional:</label>
                         <input type="text" class="form-control" name="usuario" placeholder="Usuario">
                     </div>
                 </div>
@@ -42,11 +42,12 @@
                     <input type="password" class="form-control" name="clave" placeholder="Contraseña">
                 </div>
 
-                <div class="button-container">
+                 <div class="button-container">
                     <!-- <button type="submit" class="btn btn-success" name="btningresar">Iniciar sesión</button> -->
                     <input type="submit" name="btningresar" class="btn btn-success" value="Iniciar sesión">
-                    <a href="registrar.php" class="btn btn-danger">Registrarme</a>
+                    <!-- <a href="registrar.php" class="btn btn-danger">Registrarme</a>-->
                 </div>
+                
             </form>
         </div>
     </div>

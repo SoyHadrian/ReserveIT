@@ -12,6 +12,9 @@ if(empty($_SESSION["id"])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReserveIT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="shortcut icon" href="../images/R.png" type="image/x-icon">
 </head>
@@ -19,7 +22,7 @@ if(empty($_SESSION["id"])){
 <body>
     <header class="header">
         <div class="logo">
-            <a href="../index.php"><img src="../images/logo.png" alt="Logo de la compañía"></a>
+            <a href="../pages/admin.php"><img src="../images/logo.png" alt="Logo de la compañía"></a>
         </div>
         <nav>
             <div class="content">

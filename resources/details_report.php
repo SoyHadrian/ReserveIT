@@ -30,7 +30,7 @@ $id = $_GET['id'];
         <nav>
             <div class="content">
                 <ul class="nav-links">
-                    <li><a>Nombre completo de usuario</a></li>
+                    <li><a><?php echo $_SESSION["nombre"] ?></a></li>
                 </ul>
             </div>
         </nav>
