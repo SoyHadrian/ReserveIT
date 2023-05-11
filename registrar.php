@@ -30,27 +30,27 @@
                 <div class="row mb-3">
                     <div class="col">
                         <label class="form-label">Nombre completo:</label>
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
                     </div>
 
                     <div class="col">
                         <label class="form-label">Nombre de usuario:</label>
-                        <input type="text" class="form-control" name="usuario" placeholder="Usuario">
+                        <input type="text" class="form-control" name="usuario" placeholder="Usuario" required>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Correo institucional:</label>
-                    <input type="text" class="form-control" name="correo" placeholder="ejemplo@queretaro.tecnm.mx">
+                    <input type="text" class="form-control" name="correo" placeholder="ejemplo@queretaro.tecnm.mx" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Contraseña:</label>
-                    <input type="text" class="form-control" name="clave" placeholder="Contraseña">
+                    <input type="text" class="form-control" name="clave" placeholder="Contraseña" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Repetir contraseña:</label>
-                    <input type="text" class="form-control" name="clave" placeholder="Contraseña">
+                    <input type="text" class="form-control" name="clave" placeholder="Contraseña" required>
                 </div>
 
                 <div class="button-container">

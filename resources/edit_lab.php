@@ -81,15 +81,27 @@ if(isset($_POST['submit'])){
                             <label class="form-label">Edificio:</label>
                             <select name="edificio" class="form-select">
                                 <option selected><?php echo $row['edificio'] ?></option>
-                                <option value="" disabled>----------</option>
-                                <option value="Edificio E">Edificio E</option>
-                                <option value="Edificio D">Edificio D</option>
+                                <?php
+                                    include "../resources/db_connection.php";
+                                    $sql = "SELECT * FROM `edificio`";
+                                    $result = mysqli_query($connection, $sql);
+                                    while ($row = mysqli_fetch_assoc($result)){
+                                        ?>
+                                    <option value="<?php echo $row['nombre'] ?>"><?php echo $row['nombre'] ?></option>
+                                <?php
+                                    }
+                                    ?>
                             </select>
                         </div>
                     </div>
 
                 </div>
                 <div class="mb-3">
+                <?php 
+                $sql = "SELECT * FROM `laboratorio` WHERE id = $id LIMIT 1";
+                $result = mysqli_query($connection, $sql);
+                $row =  mysqli_fetch_assoc($result);
+            ?>
                     <label class="form-label">Descripción:</label>
                     <input type="text" class="form-control" name="descripcion"
                         value="<?php echo $row['descripcion'] ?>">

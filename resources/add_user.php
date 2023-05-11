@@ -106,7 +106,7 @@ if(isset($_POST['submit'])){
                     </div>
                     <div class="col">
                         <label class="form-label">Rol de usuario:</label>
-                        <select name="rol" class="form-select" required>
+                        <select name="rol" class="form-select">
                             <option selected value="Alumno">Alumno</option>
                             <option value="Administrador">Administrador</option>
                             <option value="Prestante de servicio social">Prestante de servicio social</option>

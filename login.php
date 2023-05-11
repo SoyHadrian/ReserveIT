@@ -29,8 +29,8 @@
             include "resources/db_connection.php";
             include "resources/controller_login.php";
             ?>
-        <div class="container d-flex justify-content-center" style="height: auto">
-            <form method="post" action="">
+        
+            <form method="post" action="" class="form container-fluid">
                 <div class="row mb-3">
                     <div class="col">
                         <label class="form-label">Usuario o correo institucional:</label>
@@ -45,11 +45,11 @@
                  <div class="button-container">
                     <!-- <button type="submit" class="btn btn-success" name="btningresar">Iniciar sesión</button> -->
                     <input type="submit" name="btningresar" class="btn btn-success" value="Iniciar sesión">
-                    <!-- <a href="registrar.php" class="btn btn-danger">Registrarme</a>-->
+                     <a href="registrar.php" class="btn btn-danger">Registrarme</a>
                 </div>
                 
             </form>
-        </div>
+        
     </div>
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

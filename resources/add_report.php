@@ -74,9 +74,16 @@ if(isset($_POST['submit'])){
                         <div class="mb-3">
                             <label class="form-label">Edificio:</label>                                    
                             <select name="edificio" class="form-select">
-                                <option selected disabled>Elegir edificio</option>
-                                <option value="Edificio E">Edificio E</option>
-                                <option value="Edificio D">Edificio D</option>
+                            <?php
+                                    include "../resources/db_connection.php";
+                                    $sql = "SELECT * FROM `edificio`";
+                                    $result = mysqli_query($connection, $sql);
+                                    while ($row = mysqli_fetch_assoc($result)){
+                                        ?>
+                                    <option value="<?php echo $row['nombre'] ?>"><?php echo $row['nombre'] ?></option>
+                                <?php
+                                    }
+                                    ?>
                             </select>
                                     
                         </div>
@@ -87,7 +94,6 @@ if(isset($_POST['submit'])){
                     <div class="col">
                         <label class="form-label">Quién reporta:</label>
                         <select name="reporta" class="form-select">
-                            <option selected disabled>Elegir usuario</option>
                             <?php
                                     include "../resources/db_connection.php";
                                     $sql = "SELECT * FROM `usuario`";
@@ -104,7 +110,6 @@ if(isset($_POST['submit'])){
                     <div class="col">
                         <label class="form-label">Laboratorio:</label>
                         <select name="laboratorio" class="form-select">
-                            <option selected disabled>Elegir laboratorio</option>
                             <?php
                                     include "../resources/db_connection.php";
                                     $sql = "SELECT * FROM `laboratorio`";
