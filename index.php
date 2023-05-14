@@ -30,14 +30,16 @@
                 </div>
             </div>
         </nav>
-        <a href="login.php" class="btn" style="text-decoration: none;"><button class="btn btn-rounded">Iniciar sesión</button></a>
+        <a href="login.php" class="btn" style="text-decoration: none;"><button class="btn btn-rounded">Iniciar
+                sesión</button></a>
     </header>
     <div class="content-body">
         <div class="caja">
             <h1>ReserveIT</h1>
             <p>ReserveIT es un sistema de gestión de laboratorios que permite a los usuarios registrar incidencias.</p>
             <div class="mas-inf">
-                <a href="masInf.php" class="btn" style="text-decoration: none;"><button class="btn btn-rounded">Más info</button></a>
+                <a href="masInf.php" class="btn" style="text-decoration: none;"><button class="btn btn-rounded">Más
+                        info</button></a>
             </div>
         </div>
     </div>
