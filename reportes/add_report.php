@@ -11,12 +11,11 @@ if (isset($_POST['submit'])) {
     $titulo = $_POST['titulo'];
     $reporta = $_POST['reporta'];
     $laboratorio = $_POST['laboratorio'];
-    $edificio = $_POST['edificio'];
     $descripcion = $_POST['descripcion'];
     $fecha = date('Y-m-d');
 
-    $sql = "INSERT INTO `reporte`(`id`, `titulo`, `reporta`, `laboratorio`, `edificio`, `descripcion`, `fecha`)
-    VALUES (NULL, '$titulo', '$reporta', '$laboratorio', '$edificio', '$descripcion', '$fecha')";
+    $sql = "INSERT INTO `reporte`(`id_reporte`, `titulo`, `reporta`, `laboratorio`, `descripcion`, `fecha`)
+    VALUES (NULL, '$titulo', '$reporta', '$laboratorio', '$descripcion', '$fecha')";
 
     $result = mysqli_query($connection, $sql);
 
@@ -67,25 +66,6 @@ if (isset($_POST['submit'])) {
                         <label class="form-label">Título del reporte:</label>
                         <input type="text" class="form-control" name="titulo" placeholder="Título">
                     </div>
-
-                    <div class="col">
-                        <div class="mb-3">
-                            <label class="form-label">Edificio:</label>
-                            <select name="edificio" class="form-select">
-                                <?php
-                                include "../db/db_connection.php";
-                                $sql = "SELECT * FROM `edificio`";
-                                $result = mysqli_query($connection, $sql);
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                ?>
-                                    <option><?php echo $row['nombre'] ?></option>
-                                <?php
-                                }
-                                ?>
-                            </select>
-
-                        </div>
-                    </div>
                 </div>
 
                 <div class="row mb-3">
@@ -98,7 +78,7 @@ if (isset($_POST['submit'])) {
                             $result = mysqli_query($connection, $sql);
                             while ($row = mysqli_fetch_assoc($result)) {
                             ?>
-                                <option value="<?php echo $row['nombre'] ?>"><?php echo $row['nombre'] ?></option>
+                                <option value="<?php echo $row['id_usuario'] ?>"><?php echo $row['nombre'] ?></option>
                             <?php
                             }
                             ?>
@@ -114,7 +94,7 @@ if (isset($_POST['submit'])) {
                             $result = mysqli_query($connection, $sql);
                             while ($row = mysqli_fetch_assoc($result)) {
                             ?>
-                                <option value="<?php echo $row['nombre'] ?>"><?php echo $row['nombre'] ?></option>
+                                <option value="<?php echo $row['id_laboratorio'] ?>"><?php echo $row['nombre'] ?></option>
                             <?php
                             }
                             ?>

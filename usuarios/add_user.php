@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
         $rol = $_POST['rol'];
         $nocontrol = $_POST['nocontrol'];
 
-        $sql = "INSERT INTO `usuario`(`id`, `nombre`, `usuario`, `correo`, `clave`, `rol`, `nocontrol`)
+        $sql = "INSERT INTO `usuario`(`id_usuario`, `nombre`, `usuario`, `correo`, `clave`, `rol`, `nocontrol`)
         VALUES (NULL, '$nombre', '$usuario', '$correo', '$clave', '$rol', '$nocontrol')";
 
         $result = mysqli_query($connection, $sql);

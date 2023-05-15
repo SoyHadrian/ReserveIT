@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $edificio = $_POST['edificio'];
     $descripcion = $_POST['descripcion'];
 
-    $sql = "INSERT INTO `laboratorio`(`id`, `nombre`, `edificio`, `descripcion`)
+    $sql = "INSERT INTO `laboratorio`(`id_laboratorio`, `nombre`, `edificio`, `descripcion`)
     VALUES (NULL, '$nombre', '$edificio', '$descripcion')";
 
     $result = mysqli_query($connection, $sql);
@@ -80,7 +80,7 @@ if (isset($_POST['submit'])) {
                                 $result = mysqli_query($connection, $sql);
                                 while ($row = mysqli_fetch_assoc($result)) {
                                 ?>
-                                    <option><?php echo $row['nombre'] ?></option>
+                                    <option value="<?php echo $row['id_edificio'] ?>"><?php echo $row['nombre'] ?></option>
                                 <?php
                                 }
                                 ?>

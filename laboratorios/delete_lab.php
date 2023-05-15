@@ -1,7 +1,7 @@
 <?php
 include "../db/db_connection.php";
 $id = $_GET['id'];
-$sql = "DELETE FROM `laboratorio` WHERE id = $id";
+$sql = "DELETE FROM `laboratorio` WHERE id_laboratorio = $id";
 $result = mysqli_query($connection, $sql);
 if ($result) {
     header("Location: laboratorios.php?msg=Laboratorio eliminado");

@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $edificio = $_POST['edificio'];
     $descripcion = $_POST['descripcion'];
 
-    $sql = "UPDATE `laboratorio` SET `nombre`='$nombre',`edificio`='$edificio',`descripcion`='$descripcion' WHERE id = $id";
+    $sql = "UPDATE `laboratorio` SET `nombre`='$nombre',`edificio`='$edificio',`descripcion`='$descripcion' WHERE id_laboratorio = $id";
 
     $result = mysqli_query($connection, $sql);
 
@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
 
     <div class="container">
         <?php
-        $sql = "SELECT * FROM `laboratorio` WHERE id = $id LIMIT 1";
+        $sql = "SELECT * FROM `laboratorio` WHERE id_laboratorio = $id LIMIT 1";
         $result = mysqli_query($connection, $sql);
         $row =  mysqli_fetch_assoc($result);
         ?>
@@ -84,7 +84,7 @@ if (isset($_POST['submit'])) {
                                 $result = mysqli_query($connection, $sql);
                                 while ($row = mysqli_fetch_assoc($result)) {
                                 ?>
-                                    <option><?php echo $row['nombre'] ?></option>
+                                    <option value="<?php echo $row['id_edificio'] ?>"><?php echo $row['nombre'] ?></option>
                                 <?php
                                 }
                                 ?>
@@ -95,7 +95,7 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="mb-3">
                     <?php
-                    $sql = "SELECT * FROM `laboratorio` WHERE id = $id LIMIT 1";
+                    $sql = "SELECT * FROM `laboratorio` WHERE id_laboratorio = $id LIMIT 1";
                     $result = mysqli_query($connection, $sql);
                     $row =  mysqli_fetch_assoc($result);
                     ?>

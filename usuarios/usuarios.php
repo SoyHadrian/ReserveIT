@@ -80,7 +80,7 @@ if (empty($_SESSION["id"])) {
                     ?>
 
                         <tr>
-                            <td><?php echo $row['id'] ?></td>
+                            <td><?php echo $row['id_usuario'] ?></td>
                             <td><?php echo $row['nombre'] ?></td>
                             <td><?php echo $row['usuario'] ?></td>
                             <td><?php echo $row['correo'] ?></td>
@@ -88,8 +88,8 @@ if (empty($_SESSION["id"])) {
                             <td><?php echo $row['rol'] ?></td>
                             <td><?php echo $row['clave'] ?></td>
                             <td>
-                                <a href="edit_user.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="bi bi-pencil-square"></i></a>
-                                <a href="delete_user.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="bi bi-trash-fill"></i></a>
+                                <a href="edit_user.php?id=<?php echo $row['id_usuario'] ?>" class="link-dark"><i class="bi bi-pencil-square"></i></a>
+                                <a href="delete_user.php?id=<?php echo $row['id_usuario'] ?>" class="link-dark"><i class="bi bi-trash-fill"></i></a>
                             </td>
                         </tr>
 

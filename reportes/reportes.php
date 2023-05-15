@@ -69,22 +69,24 @@ if (empty($_SESSION["id"])) {
             <tbody style="vertical-align: middle;">
                 <?php
                 include "../db/db_connection.php";
-                $sql = "SELECT * FROM `reporte`";
+                $sql = "SELECT reporte.id_reporte, reporte.titulo, reporte.descripcion, reporte.fecha, laboratorio.nombre AS nombre_laboratorio
+                FROM reporte
+                INNER JOIN laboratorio ON reporte.laboratorio = laboratorio.id_laboratorio";
                 $result = mysqli_query($connection, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
 
                     <tr>
-                        <td><?php echo $row['id'] ?></td>
+                        <td><?php echo $row['id_reporte'] ?></td>
                         <td><?php echo $row['titulo'] ?></td>
                         <td style="width: 500px;"><?php echo $row['descripcion'] ?></td>
-                        <td><?php echo $row['laboratorio'] ?></td>
+                        <td><?php echo $row['nombre_laboratorio'] ?></td>
                         <td><?php echo $row['fecha'] ?></td>
                         <td style="width: 200px;">
-                            <a href="edit_report.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="bi bi-pencil-square"></i></a>
-                            <a href="delete_report.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="bi bi-trash-fill"></i></a>
-                            <a href="complete_report.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="bi bi-check-circle-fill"></i></a>
-                            <a href="details_report.php?id=<?php echo $row['id'] ?>" class="link-dark">Detalles</a>
+                            <a href="edit_report.php?id=<?php echo $row['id_reporte'] ?>" class="link-dark"><i class="bi bi-pencil-square"></i></a>
+                            <a href="delete_report.php?id=<?php echo $row['id_reporte'] ?>" class="link-dark"><i class="bi bi-trash-fill"></i></a>
+                            <a href="complete_report.php?id=<?php echo $row['id_reporte'] ?>" class="link-dark"><i class="bi bi-check-circle-fill"></i></a>
+                            <a href="details_report.php?id=<?php echo $row['id_reporte'] ?>" class="link-dark">Detalles</a>
                         </td>
                     </tr>
 

@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
     $clave = $_POST['clave'];
     $rol = $_POST['rol'];
 
-    $sql = "UPDATE `usuario` SET `nombre`='$nombre',`correo`='$correo',`usuario`='$usuario',`clave`='$clave',`rol`='$rol' WHERE id = $id";
+    $sql = "UPDATE `usuario` SET `nombre`='$nombre',`correo`='$correo',`usuario`='$usuario',`clave`='$clave',`rol`='$rol' WHERE id_usuario = $id";
 
     $result = mysqli_query($connection, $sql);
 
@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) {
 
     <div class="container">
         <?php
-        $sql = "SELECT * FROM `usuario` WHERE id = $id LIMIT 1";
+        $sql = "SELECT * FROM `usuario` WHERE id_usuario = $id LIMIT 1";
         $result = mysqli_query($connection, $sql);
         $row =  mysqli_fetch_assoc($result);
         ?>

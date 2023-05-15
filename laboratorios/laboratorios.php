@@ -65,19 +65,21 @@ if (empty($_SESSION["id"])) {
             <tbody>
                 <?php
                 include "../db/db_connection.php";
-                $sql = "SELECT * FROM `laboratorio`";
+                $sql = "SELECT laboratorio.id_laboratorio, laboratorio.nombre, laboratorio.descripcion, edificio.nombre AS nombre_edificio
+                FROM laboratorio
+                INNER JOIN edificio ON laboratorio.edificio = edificio.id_edificio";
                 $result = mysqli_query($connection, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
 
                     <tr>
-                        <td><?php echo $row['id'] ?></td>
+                        <td><?php echo $row['id_laboratorio'] ?></td>
                         <td><?php echo $row['nombre'] ?></td>
                         <td><?php echo $row['descripcion'] ?></td>
-                        <td><?php echo $row['edificio'] ?></td>
+                        <td><?php echo $row['nombre_edificio'] ?></td>
                         <td>
-                            <a href="edit_lab.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="bi bi-pencil-square"></i></a>
-                            <a href="delete_lab.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="bi bi-trash-fill"></i></a>
+                            <a href="edit_lab.php?id=<?php echo $row['id_laboratorio'] ?>" class="link-dark"><i class="bi bi-pencil-square"></i></a>
+                            <a href="delete_lab.php?id=<?php echo $row['id_laboratorio'] ?>" class="link-dark"><i class="bi bi-trash-fill"></i></a>
                         </td>
                     </tr>
                 <?php

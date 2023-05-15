@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
     $descripcion = $_POST['descripcion'];
     $fecha = $_POST['fecha'];
 
-    $sql = "UPDATE `reporte` SET `titulo`='$titulo', `reporta`='$reporta', `laboratorio`='$laboratorio', `descripcion`='$descripcion', `fecha`='$fecha' WHERE id = $id";
+    $sql = "UPDATE `reporte` SET `titulo`='$titulo', `reporta`='$reporta', `laboratorio`='$laboratorio', `descripcion`='$descripcion', `fecha`='$fecha' WHERE id_reporte = $id";
 
     $result = mysqli_query($connection, $sql);
 
@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) {
 
     <div class="container">
         <?php
-        $sql = "SELECT * FROM `reporte` WHERE id = $id LIMIT 1";
+        $sql = "SELECT * FROM `reporte` WHERE id_reporte = $id LIMIT 1";
         $result = mysqli_query($connection, $sql);
         $row =  mysqli_fetch_assoc($result);
         ?>
@@ -70,27 +70,10 @@ if (isset($_POST['submit'])) {
                         <label class="form-label">Título del reporte:</label>
                         <input type="text" class="form-control" name="titulo" value="<?php echo $row['titulo'] ?>">
                     </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <label class="form-label">Edificio:</label>
-                            <select name="edificio" class="form-select">
-                                <?php
-                                include "../db/db_connection.php";
-                                $sql = "SELECT * FROM `edificio`";
-                                $result = mysqli_query($connection, $sql);
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                ?>
-                                    <option><?php echo $row['nombre'] ?></option>
-                                <?php
-                                }
-                                ?>
-                            </select>
 
-                        </div>
-                    </div>
                 </div>
                 <?php
-                $sql = "SELECT * FROM `reporte` WHERE id = $id LIMIT 1";
+                $sql = "SELECT * FROM `reporte` WHERE id_reporte = $id LIMIT 1";
                 $result = mysqli_query($connection, $sql);
                 $row =  mysqli_fetch_assoc($result);
                 ?>
@@ -98,14 +81,13 @@ if (isset($_POST['submit'])) {
                     <div class="col">
                         <label class="form-label">Quién reporta:</label>
                         <select name="reporta" class="form-select">
-                            <option selected><?php echo $row['reporta'] ?></option>
                             <?php
                             include "../db/db_connection.php";
                             $sql = "SELECT * FROM `usuario`";
                             $result = mysqli_query($connection, $sql);
                             while ($row = mysqli_fetch_assoc($result)) {
                             ?>
-                                <option value="<?php echo $row['nombre'] ?>"><?php echo $row['nombre'] ?></option>
+                                <option value="<?php echo $row['id_usuario'] ?>"><?php echo $row['nombre'] ?></option>
                             <?php
                             }
                             ?>
@@ -114,7 +96,7 @@ if (isset($_POST['submit'])) {
 
                     <div class="col">
                         <?php
-                        $sql = "SELECT * FROM `reporte` WHERE id = $id LIMIT 1";
+                        $sql = "SELECT * FROM `reporte` WHERE id_reporte = $id LIMIT 1";
                         $result = mysqli_query($connection, $sql);
                         $row =  mysqli_fetch_assoc($result);
                         ?>
@@ -126,7 +108,7 @@ if (isset($_POST['submit'])) {
                             $result = mysqli_query($connection, $sql);
                             while ($row = mysqli_fetch_assoc($result)) {
                             ?>
-                                <option value="<?php echo $row['nombre'] ?>"><?php echo $row['nombre'] ?></option>
+                                <option value="<?php echo $row['id_laboratorio'] ?>"><?php echo $row['nombre'] ?></option>
                             <?php
                             }
                             ?>
@@ -136,7 +118,7 @@ if (isset($_POST['submit'])) {
 
                 <div class="mb-3">
                     <?php
-                    $sql = "SELECT * FROM `reporte` WHERE id = $id LIMIT 1";
+                    $sql = "SELECT * FROM `reporte` WHERE id_reporte = $id LIMIT 1";
                     $result = mysqli_query($connection, $sql);
                     $row =  mysqli_fetch_assoc($result);
                     ?>
