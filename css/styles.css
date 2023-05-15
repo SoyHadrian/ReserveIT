@@ -7,10 +7,10 @@
 }
 
 body{
-    background: url("../images/escuela.jpg");
+    background-image: url("/images/escuela.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-size: cover;
 }
 
 .nav-links, .btn {
@@ -110,72 +110,4 @@ body{
     padding-left: 100px;
 }
 
-/*   ESTA SECCION ES PARA LA PÁGINA DE MAS INFO   */
-.content-mas{
-    display: flexbox;
-    align-items: center;
-    padding-left: 100px;
-    padding-right: 100px;
-}
 
-.caja-mas{
-    /*border-radius: 30px;*/
-    position: center;
-    background-color: white;
-    height: 640px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-bottom: 50px;
-    padding-top: 50px;
-    text-align: center;
-    display: flexbox;
-}
-
-/*   ESTA SECCION ES PARA LA PÁGINA DE MAS INFO   */
-
-.caja{
-    /*border-radius: 15px;*/
-    position: relative;
-    width: 700px;
-    height: 500px;
-    background-color: #fc6700ff;
-    opacity: 0.8;
-    padding: 50px;
-    text-align: center;
-    display: flexbox;
-}
-
-.caja h1{
-    color: white;
-    font-size: larger;
-    padding-bottom: 45px;
-}
-
-.caja p{
-    color: white;
-    font-size: large;
-}
-
-.mas-inf{
-    position: relative;
-    display: flex;
-    padding-top: 250px;
-    padding-left: 450px;
-}
-
-.caja .btn button{
-    font-weight: 700;
-    font-weight: bold;
-    color: white;
-    padding: 9px 25px;
-    background: #26A69A;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-    
-}
-
-.caja .btn button:hover{
-    color: #fee569ff;
-    transform: scale(1.1);
-}

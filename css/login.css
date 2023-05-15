@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+body{
+    background-color: white;
+}
+
+.nav-links, .btn {
+    display: flex;
+    align-items: center;
+}
+
+.btn-rounded {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .btn-rounded button {
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  
+
+.header{
+    background-color: #004173;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;;
+}
+
+.header .logo{
+    cursor: pointer;
+}
+
+.header .logo img{
+    height: 50px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+.content{
+    display: inline-flex;
+}
+
+.content .left{
+    padding-left: 0;
+    padding-right: 550px;
+    align-self: self-start;
+}
+
+.header .nav-links{
+    list-style: none;
+
+}
+
+.header .nav-links li{
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.header .nav-links a{
+    font-size: 700;
+    color: white;
+    text-decoration: none;
+
+}
+
+.header .nav-links li a:hover{
+    color: #fc6700ff;
+}
+
+.header .btn button{
+    font-weight: 700;
+    font-weight: bold;
+    color: white;
+    padding: 9px 25px;
+    background: #26A69A;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.header .btn button:hover{
+    color: #fee569ff;
+    transform: scale(1.1);
+}
+.form{
+    background-image: url(../images/R.png);
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position: 20px 20px;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    translate: 10px 40px;
+    margin: auto;
+    height: 550px;
+    width: 90%;
+    max-width: 400px;
+    padding: 4.5em 3em;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px -5px rgb(0 0 0 / 100%);
+    text-align: center;
+  }
+  
+  .form_title{
+    font-size: 2rem;
+    margin-bottom: .5rem;
+  }
+  
+  .form_paragraph{
+    font-weight: 300;
+  }
+  
+  .form_link{
+    font-weight: 400;
+    color: #000;
+  }
+  
+  .form_container{
+    margin-top: 3em;
+    display: grid;
+    gap: 2rem;
+  }
+  
+  .form_group{
+    position: relative;
+    --color: #0000007e;
+  }
+  
+  .form_input{
+    width: 100%;
+    background: none;
+    color: #000000;
+    font-size: 1rem;
+    padding: .4em .1em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #26A69A;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .form_input:not(:placeholder-shown){
+    color: #000000;
+  }
+  
+  .form_input:focus + .form_label,
+  .form_input:not(:placeholder-shown)+.form_label{
+    transform: translateY(-12px) scale(.7);
+    transform-origin: left top;
+    color: #004173;
+  }
+  
+  .form_label{
+    color: var(--color);
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    transform: translateY(10px);
+    transition: transform .5s, color .3s;
+  }
+
+  .form_submit{
+    background: #343bc4;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-weight: 200;
+    font-size: 1rem;
+    padding: .8rem 0;
+    border: none;
+    border-radius: .5rem;
+  }
+  
+  .form_line{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #343bc4;
+    transform: scale(0);
+    transform: left bottom;
+    transition: transform .4s;
+  }
+  
+  .form_input:focus ~ .form_line,
+  .form_input:not(:placeholder-shown) ~ .form_line{
+    transform: scale(1);
+  }
+  
+  @media (max-width:425px){
+    .form_title{
+      font-size: 1.8rem;
+    }
+  }
+  
+  
+  
