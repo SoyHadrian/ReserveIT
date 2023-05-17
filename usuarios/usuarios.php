@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (empty($_SESSION["id"])) {
+if (!empty($_SESSION["id"])) {
     header("location: index.php");
 }
 ?>
@@ -13,7 +13,6 @@ if (empty($_SESSION["id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReserveIT</title>
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-    <script src="script.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/admin.css">
@@ -100,10 +99,10 @@ if (empty($_SESSION["id"])) {
                 </tbody>
             </table>
         </div>
-        <form method="post" action="../resources/procesar.php" enctype="multipart/form-data">
+        <form method="post" action="../resources/procesarExcel.php" enctype="multipart/form-data">
             <div class="mb-3" style="display: flex; padding: 10px;">
-                <input type="file" name="archivo" class="form-control" style="width: 500px;">
-                <input type="submit" value="Subir archivo" class="btn btn-success">
+                <input type="file" name="archivo" class="form-control" style="width: 500px;" id="seleccionarBtn">
+                <input type="submit" value="Subir archivo" class="btn btn-success" id="subirBtn">
             </div>
         </form>
 
