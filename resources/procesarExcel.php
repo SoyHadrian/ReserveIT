@@ -27,7 +27,7 @@ if (isset($_FILES['archivo'])) {
     $columnas = $hoja->getHighestColumn();
 
     for ($fila = 2; $fila <= $filas; $fila++) {
-        $idUsuario = $hoja->getCell('A' . $fila)->getValue();
+
         $noControl = $hoja->getCell('B' . $fila)->getValue();
         $nombre = $hoja->getCell('C' . $fila)->getValue();
         $usuario = $hoja->getCell('D' . $fila)->getValue();
@@ -35,17 +35,17 @@ if (isset($_FILES['archivo'])) {
         $clave = $hoja->getCell('F' . $fila)->getValue();
         $rol = $hoja->getCell('G' . $fila)->getValue();
 
-        echo "Id Usuario: " . $idUsuario . "\n";
+
         echo "No Control: " . $noControl . "\n";
         echo "Nombre: " . $nombre . "\n";
         echo "Usuario: " . $usuario . "\n";
         echo "Correo: " . $correo . "\n";
-        echo "Clave: " . $idUsuario . "\n";
+        echo "Clave: " . $clave . "\n";
         echo "Rol: " . $rol . "\n";
 
         echo "\n";
 
-        $sql = "INSERT INTO usuario (id_usuario, noControl, nombre, usuario, correo, clave, rol) VALUES ('$idUsuario', '$noControl', '$nombre', '$usuario', '$correo', '$clave', '$rol')";
+        $sql = "INSERT INTO usuario ( noControl, nombre, usuario, correo, clave, rol) VALUES ('$noControl', '$nombre', '$usuario', '$correo', '$clave', '$rol')";
 
         if (mysqli_query($connection, $sql)) {
             echo "Datos insertados correctamente en la base de datos.";
