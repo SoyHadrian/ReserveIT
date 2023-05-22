@@ -8,6 +8,7 @@ if (empty($_SESSION["id"])) {
 include "../db/db_connection.php";
 
 if (isset($_POST['submit'])) {
+    date_default_timezone_set('America/Mexico_City');
     $titulo = $_POST['titulo'];
     $reporta = $_POST['reporta'];
     $laboratorio = $_POST['laboratorio'];
@@ -36,7 +37,7 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <title>ReserveIT</title>
-    <link rel="stylesheet" href="../css/resources.css">
+    <link rel="stylesheet" href="../css/admin.css">
     <link rel="shortcut icon" href="../images/R.png" type="image/x-icon">
 </head>
 

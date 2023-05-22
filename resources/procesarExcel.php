@@ -5,7 +5,7 @@ require 'PHPExcel-1.8/Classes/PHPExcel.php';
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "reserveit";
+$dbname = "reserveit2";
 
 // Crear la conexión a la base de datos
 $connection = mysqli_connect($servername, $username, $password, $dbname);
@@ -35,7 +35,14 @@ if (isset($_FILES['archivo'])) {
         $clave = $hoja->getCell('F' . $fila)->getValue();
         $rol = $hoja->getCell('G' . $fila)->getValue();
 
-
+        /*
+        HACER LA PARTE DE VALIDACIÓN DE CORREO, USUARIO, ETC
+        if(algo mal){
+            fila++
+        }else{
+            crear sentencia
+        }
+        */
         echo "No Control: " . $noControl . "\n";
         echo "Nombre: " . $nombre . "\n";
         echo "Usuario: " . $usuario . "\n";
@@ -45,18 +52,18 @@ if (isset($_FILES['archivo'])) {
 
         echo "\n";
 
-        $sql = "INSERT INTO usuario ( noControl, nombre, usuario, correo, clave, rol) VALUES ('$noControl', '$nombre', '$usuario', '$correo', '$clave', '$rol')";
+        $sql = "INSERT INTO usuario (noControl, nombre, usuario, correo, clave, rol) VALUES ('$noControl', '$nombre', '$usuario', '$correo', '$clave', '$rol')";
 
         if (mysqli_query($connection, $sql)) {
-            echo "Datos insertados correctamente en la base de datos.";
+            header("location: ../usuarios/usuarios.php?msg=Archivo procesado correctamente");
         } else {
-            echo "Error al insertar los datos: " . mysqli_error($connection);
+            header("location: ../usuarios/usuarios.php?msg=Hubo un error al subir el archivo");
+            //echo "Error al insertar los datos: " . mysqli_error($connection);
         }
     }
-    
+
     $excel->disconnectWorksheets();
     unset($excel);
 }
 
 mysqli_close($connection);
-?>

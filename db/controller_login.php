@@ -6,19 +6,19 @@ if (!empty($_POST["btningresar"])) {
     } else {
         $usuario = $_POST["usuario"];
         $clave = $_POST["clave"];
-        $sql = $conexion->query(" select * from usuario where usuario='$usuario' and clave='$clave' ");
+        $sql = $connection->query(" select * from usuario where usuario='$usuario' and clave='$clave' ");
         if ($datos = $sql->fetch_object()) {
-            $_SESSION["id"] = $datos->id;
+            $_SESSION["id"] = $datos->id_usuario;
             $_SESSION["nombre"] = $datos->nombre;
             $_SESSION["rol"] = $datos->rol;
 
             if ($_SESSION["rol"] == "Alumno") {
                 header("location:user.php");
-            } elseif ($_SESSION["rol"] == "Administrador") {
+            } elseif ($_SESSION["rol"] == "Administrador" | $_SESSION["rol"] == "Prestante de servicio social") {
                 header("location:pages/admin.php");
             }
         } else {
-            echo '<div class="alert alert-danger">Acceso denegado</div>';
+            echo '<div class="alert alert-danger" style="position: relative;">Acceso denegado</div>';
         }
     }
 }
