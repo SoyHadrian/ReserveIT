@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (!empty($_SESSION["id"])) {
-    header("location: index.php");
+if (empty($_SESSION["id"])) {
+    header("location: ../index.php");
 } elseif ($_SESSION["rol"] != "Administrador") {
     header("location: ../user.php");
 } 
