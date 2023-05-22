@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (!empty($_SESSION["id"])) {
-    header("location: index.php");
+if (empty($_SESSION["id"])) {
+    header("location: ../index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -36,7 +36,7 @@ if (!empty($_SESSION["id"])) {
     </header>
     <div class="content2">
         <ul class="nav-links">
-            <li><a href="../horarios/horarios.php">Horarios</a></li>
+            <li><a href="../pages/asignados.php">Asignados</a></li>
             <li><a href="../laboratorios/laboratorios.php">Laboratorios</a></li>
             <li><a href="../usuarios/usuarios.php">Usuarios</a></li>
             <li><a href="../reportes/reportes.php">Reportes</a></li>
@@ -55,7 +55,20 @@ if (!empty($_SESSION["id"])) {
               </div>';
         }
         ?>
-        <a href="add_user.php" class="btn btn-dark mb-3 fs-6">Agregar usuario</a>
+        <div class="row">
+            <div class="col">
+                <a href="add_user.php" class="btn btn-dark mb-3 fs-6">Agregar usuario</a>
+            </div>
+            <div class="col">
+                <form method="post" action="../resources/procesarExcel.php" enctype="multipart/form-data">
+                    <div class="mb-3" style="display: flex; padding: 10px;">
+                        <input type="file" name="archivo" class="form-control" style="width: 500px;" id="seleccionarBtn">
+                        <input type="submit" value="Subir archivo" class="btn btn-success" id="subirBtn">
+                    </div>
+                </form>
+            </div>
+
+        </div>
 
         <div class="table-responsive">
             <table class="table table-hover text-center fs-6">
@@ -100,12 +113,6 @@ if (!empty($_SESSION["id"])) {
                 </tbody>
             </table>
         </div>
-        <form method="post" action="../resources/procesarExcel.php" enctype="multipart/form-data">
-            <div class="mb-3" style="display: flex; padding: 10px;">
-                <input type="file" name="archivo" class="form-control" style="width: 500px;" id="seleccionarBtn">
-                <input type="submit" value="Subir archivo" class="btn btn-success" id="subirBtn">
-            </div>
-        </form>
 
     </div>
     <!-- Bootstrap -->

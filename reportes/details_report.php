@@ -17,7 +17,7 @@ $id = $_GET['id'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <title>ReserveIT</title>
-    <link rel="stylesheet" href="../css/resources.css">
+    <link rel="stylesheet" href="../css/admin.css">
     <link rel="shortcut icon" href="../images/R.png" type="image/x-icon">
 </head>
 
@@ -41,7 +41,12 @@ $id = $_GET['id'];
 
     <div class="container">
         <?php
-        $sql = "SELECT * FROM `reporte` WHERE id = $id LIMIT 1";
+        $sql = "SELECT r.titulo, r.descripcion, r.fecha, u.nombre AS nombre_usuario, l.nombre AS nombre_laboratorio, e.nombre AS nombre_edificio, r.id_reporte
+        FROM reporte r
+        JOIN usuario u ON r.reporta = u.id_usuario
+        JOIN laboratorio l ON r.laboratorio = l.id_laboratorio
+        JOIN edificio e ON l.edificio = e.id_edificio
+        WHERE r.id_reporte = $id";
         $result = mysqli_query($connection, $sql);
         $row =  mysqli_fetch_assoc($result);
         ?>
@@ -55,19 +60,19 @@ $id = $_GET['id'];
 
                     <div class="col">
                         <label class="form-label">Edificio de incidencia:</label>
-                        <input disabled type="text" class="form-control" name="titulo" value="<?php echo $row['edificio'] ?>">
+                        <input disabled type="text" class="form-control" name="titulo" value="<?php echo $row['nombre_edificio'] ?>">
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <div class="col">
                         <label class="form-label">Persona que reporta:</label>
-                        <input disabled type="text" class="form-control" name="titulo" value="<?php echo $row['reporta'] ?>">
+                        <input disabled type="text" class="form-control" name="titulo" value="<?php echo $row['nombre_usuario'] ?>">
                     </div>
 
                     <div class="col">
                         <label class="form-label">Laboratorio de ocurrencia:</label>
-                        <input disabled type="text" class="form-control" name="titulo" value="<?php echo $row['laboratorio'] ?>">
+                        <input disabled type="text" class="form-control" name="titulo" value="<?php echo $row['nombre_laboratorio'] ?>">
                     </div>
                 </div>
 
@@ -81,7 +86,7 @@ $id = $_GET['id'];
                     <input disabled type="date" id="fecha" name="fecha" value="<?php echo $row['fecha'] ?>">
                 </div>
                 <div>
-                    <a href="edit_report.php?id=<?php echo $row['id'] ?>" class="btn btn-primary">Editar</a>
+                    <a href="edit_report.php?id=<?php echo $row['id_reporte'] ?>" class="btn btn-primary">Editar</a>
                     <a href="reportes.php" class="btn btn-danger">Regresar</a>
                 </div>
             </form>

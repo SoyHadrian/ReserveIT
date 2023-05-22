@@ -35,7 +35,7 @@ if (empty($_SESSION["id"])) {
     </header>
     <div class="content2">
         <ul class="nav-links">
-            <li><a href="../horarios/horarios.php">Horarios</a></li>
+            <li><a href="../pages/asignados.php">Asignados</a></li>
             <li><a href="../laboratorios/laboratorios.php">Laboratorios</a></li>
             <li><a href="../usuarios/usuarios.php">Usuarios</a></li>
             <li><a href="../reportes/reportes.php">Reportes</a></li>

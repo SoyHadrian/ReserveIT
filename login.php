@@ -31,12 +31,10 @@
 
     <form class="form align-items-center" action="" method="post">
         <h2 class="form_title">Iniciar sesión</h2>
-
         <?php
         include "db/db_connection.php";
         include "db/controller_login.php";
         ?>
-
         <div class="form_container">
             <div class="form_group">
                 <input type="text" id="email" class="form_input" placeholder=" " name="usuario">
@@ -49,7 +47,7 @@
                 <span class="form_line"></span>
             </div>
             <input type="submit" class="form_submit" value="Ingresar" name="btningresar">
-            <p class="form_paragraph">¿No tienes una cuenta? <a href="registrar.php" class="form_link">Entra aquí</a></p>
+            <!-- <p class="form_paragraph">¿No tienes una cuenta? <a href="registrar.php" class="form_link">Entra aquí</a></p> -->
         </div>
     </form>
 

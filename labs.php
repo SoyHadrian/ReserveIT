@@ -25,7 +25,6 @@ if (empty($_SESSION["id"])) {
         <nav>
             <div class="content" style="padding-top: 25px;">
                 <ul class="nav-links" style="padding-right: 433px;">
-                    <li><a href="#">Horarios</a></li>
                     <li><a href="labs.php">Laboratorios</a></li>
                 </ul>
 
@@ -35,7 +34,7 @@ if (empty($_SESSION["id"])) {
                 </ul>
             </div>
         </nav>
-        <a href="resources/controler_close_session.php" class="btn"><button class="btn btn-rounded">Cerrar sesión</button></a>
+        <a href="user.php" class="btn"><button class="btn btn-rounded">Regresar</button></a>
     </header>
 
     <div class="container" style="padding-top: 30px;">
@@ -54,13 +53,15 @@ if (empty($_SESSION["id"])) {
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripcion</th>
                     <th scope="col">Edificio</th>
-                    <th scope="col">Información</th>
+                    <!-- <th scope="col">Accion</th> -->
                 </tr>
             </thead>
             <tbody>
                 <?php
-                include "resources/db_connection.php";
-                $sql = "SELECT * FROM `laboratorio`";
+                include "db/db_connection.php";
+                $sql = "SELECT laboratorio.id_laboratorio, laboratorio.nombre, laboratorio.descripcion, edificio.nombre AS nombre_edificio
+                FROM laboratorio
+                INNER JOIN edificio ON laboratorio.edificio = edificio.id_edificio";
                 $result = mysqli_query($connection, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
@@ -68,11 +69,11 @@ if (empty($_SESSION["id"])) {
                     <tr>
                         <td><?php echo $row['nombre'] ?></td>
                         <td><?php echo $row['descripcion'] ?></td>
-                        <td><?php echo $row['edificio'] ?></td>
-                        <td>
-                            <a href="../resources/edit_lab.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="bi bi-pencil-square"></i></a>
-                            <a href="../resources/delete_lab.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="bi bi-trash-fill"></i></a>
-                        </td>
+                        <td><?php echo $row['nombre_edificio'] ?></td>
+                        <!-- <td>
+                            <a href="edit_lab.php?id=<?php echo $row['id_laboratorio'] ?>" class="link-dark"><i class="bi bi-pencil-square"></i></a>
+                            <a href="delete_lab.php?id=<?php echo $row['id_laboratorio'] ?>" class="link-dark"><i class="bi bi-trash-fill"></i></a>
+                        </td> -->
                     </tr>
                 <?php
                 }
