@@ -6,7 +6,7 @@ if (!empty($_POST["btningresar"])) {
     } else {
         $usuario = $_POST["usuario"];
         $clave = $_POST["clave"];
-        $sql = $conexion->query(" select * from usuario where usuario='$usuario' and clave='$clave' ");
+        $sql = $connection->query(" select * from usuario where usuario='$usuario' and clave='$clave' ");
         if ($datos = $sql->fetch_object()) {
             $_SESSION["id"] = $datos->id;
             $_SESSION["nombre"] = $datos->nombre;

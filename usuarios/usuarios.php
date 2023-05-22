@@ -40,6 +40,7 @@ if (!empty($_SESSION["id"])) {
             <li><a href="../laboratorios/laboratorios.php">Laboratorios</a></li>
             <li><a href="../usuarios/usuarios.php">Usuarios</a></li>
             <li><a href="../reportes/reportes.php">Reportes</a></li>
+            <li><a href="../asignaciones/asignaciones.php">Asignaciones</a></li>
         </ul>
     </div>
 
