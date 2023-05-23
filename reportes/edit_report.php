@@ -13,15 +13,22 @@ if (isset($_POST['submit'])) {
     $laboratorio = $_POST['laboratorio'];
     $descripcion = $_POST['descripcion'];
     $fecha = $_POST['fecha'];
+    $prioridad = $_POST['prioridad'];
 
     $sql = "UPDATE `reporte` SET `titulo`='$titulo', `reporta`='$reporta', `laboratorio`='$laboratorio', `descripcion`='$descripcion', `fecha`='$fecha' WHERE id_reporte = $id";
 
     $result = mysqli_query($connection, $sql);
 
     if ($result) {
-        header("Location: reportes.php?msg=Reporte actualizado");
+        $sql_asignacion = "UPDATE `asignacion` SET `prioridad`='$prioridad' WHERE id_reporte = $id";
+        $result_asignacion = mysqli_query($connection, $sql_asignacion);
+        if ($result_asignacion) {
+            header("Location: reportes.php?msg=Reporte actualizado");
+        } else {
+            echo "Failed to update priority: " . mysqli_error($connection);
+        }
     } else {
-        echo "Failed: " . mysqli_error($connection);
+        echo "Failed to update report: " . mysqli_error($connection);
     }
 }
 
@@ -130,6 +137,15 @@ if (isset($_POST['submit'])) {
                     <label class="form-label">Fecha de reporte:</label>
                     <input type="date" id="fecha" name="fecha" value="<?php echo $row['fecha'] ?>">
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">Prioridad:</label>
+                    <select name="prioridad" class="form-select">
+                        <option value="1">1 (Alta)</option>
+                        <option value="2">2 (Media)</option>
+                        <option value="3">3 (Baja)</option>
+                    </select>
+                </div>            
+
                 <div>
                     <button type="submit" class="btn btn-success" name="submit">Editar</button>
                     <a href="reportes.php" class="btn btn-danger">Cancelar</a>

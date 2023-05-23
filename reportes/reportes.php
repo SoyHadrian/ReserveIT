@@ -51,7 +51,7 @@ if (empty($_SESSION["id"])) {
             echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
                 ' . $msg . '
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>';
+            </div>';
         }
         ?>
         <a href="../reportes/add_report.php" class="btn btn-dark mb-3 fs-6">Agregar Reporte</a>
@@ -64,15 +64,17 @@ if (empty($_SESSION["id"])) {
                     <th scope="col">Descripción</th>
                     <th scope="col">Laboratorio</th>
                     <th scope="col">Fecha de reporte</th>
-                    <th scope="col">Accion</th>
+                    <th scope="col">Prioridad</th> <!-- Nueva columna -->
+                    <th scope="col">Acción</th>
                 </tr>
             </thead>
             <tbody style="vertical-align: middle;">
                 <?php
                 include "../db/db_connection.php";
-                $sql = "SELECT reporte.id_reporte, reporte.titulo, reporte.descripcion, reporte.fecha, laboratorio.nombre AS nombre_laboratorio
+                $sql = "SELECT reporte.id_reporte, reporte.titulo, reporte.descripcion, reporte.fecha, laboratorio.nombre AS nombre_laboratorio, asignacion.prioridad
                 FROM reporte
-                INNER JOIN laboratorio ON reporte.laboratorio = laboratorio.id_laboratorio";
+                INNER JOIN laboratorio ON reporte.laboratorio = laboratorio.id_laboratorio
+                INNER JOIN asignacion ON reporte.id_reporte = asignacion.id_reporte";
                 $result = mysqli_query($connection, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
@@ -83,6 +85,7 @@ if (empty($_SESSION["id"])) {
                         <td style="width: 500px;"><?php echo $row['descripcion'] ?></td>
                         <td><?php echo $row['nombre_laboratorio'] ?></td>
                         <td><?php echo $row['fecha'] ?></td>
+                        <td><?php echo $row['prioridad'] ?></td> 
                         <td style="width: 200px;">
                             <a href="edit_report.php?id=<?php echo $row['id_reporte'] ?>" class="link-dark"><i class="bi bi-pencil-square"></i></a>
                             <a href="delete_report.php?id=<?php echo $row['id_reporte'] ?>" class="link-dark"><i class="bi bi-trash-fill"></i></a>
