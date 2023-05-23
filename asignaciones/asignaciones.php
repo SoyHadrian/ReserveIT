@@ -103,13 +103,13 @@ if (empty($_SESSION["id"])) {
                         <td><?php echo $row['titulo'] ?></td>
                         <td><?php echo $row['descripcion'] ?></td>
                         <td><?php echo $row['laboratorio'] ?></td>
-                        <td style="background-color: <?php echo $prioridadColor; ?>"><?php echo $row['prioridad'] ?></td>
-                        <td style="background-color: <?php echo $estadoColor; ?>"><?php echo $row['estado'] ?></td>
+                        <td style="background-color: <?php echo $prioridadColor; ?>"><strong><?php echo $row['prioridad'] ?></strong></td>
+                        <td style="background-color: <?php echo $estadoColor; ?>"><strong><span style="color: white;"><?php echo $row['estado'] ?></span></strong></td>
                         <td>
-                        <form method="POST">
-                            <input type="hidden" name="id_asignacion" value="<?php echo $row['id_asignacion'] ?>">
-                            <button type="submit" class="btn btn-danger btn-eliminar" data-id="<?php echo $row['id_asignacion'] ?>">Eliminar</button>
-                        </form>
+                            <form method="POST">
+                                <input type="hidden" name="id_asignacion" value="<?php echo $row['id_asignacion'] ?>">
+                                <button type="submit" class="btn btn-danger btn-eliminar" data-id="<?php echo $row['id_asignacion'] ?>">Eliminar</button>
+                            </form>
                         </td>
                     </tr>
                 <?php

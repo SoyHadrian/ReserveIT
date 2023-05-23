@@ -13,12 +13,33 @@ if (isset($_POST['submit'])) {
     $reporta = $_POST['reporta'];
     $laboratorio = $_POST['laboratorio'];
     $descripcion = $_POST['descripcion'];
+    $prioridad = $_POST['prioridad'];
     $fecha = date('Y-m-d');
 
     $sql = "INSERT INTO `reporte`(`id_reporte`, `titulo`, `reporta`, `laboratorio`, `descripcion`, `fecha`)
     VALUES (NULL, '$titulo', '$reporta', '$laboratorio', '$descripcion', '$fecha')";
 
     $result = mysqli_query($connection, $sql);
+
+    if ($result) {
+            $id_reporte = mysqli_insert_id($connection);
+        
+            $sql = "SELECT id_usuario, COUNT(*) AS asignaciones FROM asignacion WHERE estado = 'En curso' GROUP BY id_usuario ORDER BY asignaciones ASC LIMIT 1";
+            $result = mysqli_query($connection, $sql);
+            $row = mysqli_fetch_assoc($result);
+            $id_usuario = $row['id_usuario'];
+        
+            $sql = "INSERT INTO asignacion (id_usuario, id_reporte, prioridad, estado) VALUES ('$id_usuario', '$id_reporte', '$prioridad', 'En curso')";
+            $result = mysqli_query($connection, $sql);
+        
+            if ($result) {
+                header("Location: reportes.php?msg=Nuevo reporte y asignación creados");
+            } else {
+                echo "Failed: " . mysqli_error($connection);
+            }
+        } else {
+            echo "Failed: " . mysqli_error($connection);
+    }
 
     if ($result) {
         header("Location: reportes.php?msg=Nuevo reporte creado");
@@ -60,7 +81,7 @@ if (isset($_POST['submit'])) {
     </nav>
 
     <div class="container">
-        <div class="container d-flex justify-content-center">
+    <div class="container d-flex justify-content-center">
             <form action="" method="post" style="width: 1000px; min-width: 300px;">
                 <div class="row mb-3">
                     <div class="col">
@@ -105,7 +126,16 @@ if (isset($_POST['submit'])) {
 
                 <div class="mb-3">
                     <label class="form-label">Descripción:</label>
-                    <input type="" class="form-control" name="descripcion" placeholder="Descripcion">
+                    <input type="" class="form-control" name="descripcion" placeholder="Descripción">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Prioridad:</label>
+                    <select name="prioridad" class="form-select">
+                        <option value="1">1 (Alta)</option>
+                        <option value="2">2 (Media)</option>
+                        <option value="3">3 (Baja)</option>
+                    </select>
                 </div>
 
                 <div>
