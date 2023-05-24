@@ -50,8 +50,13 @@ if (isset($_POST['submit'])) {
             <div class="content">
                 <div class="left">
                     <ul class="nav-links">
-                        <li><a href="horarios.php">Horarios</a></li>
+                        <li><a href="#">Horarios</a></li>
                         <li><a href="labs.php">Laboratorios</a></li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <ul class="nav-links">
+                        <li><a href="reportar.php">Generar reporte</a></li>
                     </ul>
                 </div>
             </div>

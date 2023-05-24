@@ -20,11 +20,12 @@ if (empty($_SESSION["id"])) {
 <body>
     <header class="header">
         <div class="logo">
-            <a href="index.php"><img src="images/logo.png" alt="Logo de la compañía"></a>
+            <a><img src="images/logo.png" alt="Logo de la compañía"></a>
         </div>
         <nav>
-            <div class="content" style="padding-top: 25px;">
-                <ul class="nav-links" style="padding-right: 433px;">
+            <div class="content" >
+                <ul class="nav-links">
+                    <li><a href="#">Horarios</a></li>
                     <li><a href="labs.php">Laboratorios</a></li>
                 </ul>
 
