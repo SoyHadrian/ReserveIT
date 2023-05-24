@@ -3,6 +3,15 @@ session_start();
 if (empty($_SESSION["id"])) {
     header("location: index.php");
 }
+$id_usuario = $_SESSION["id"];
+include "db/db_connection.php";
+$sql = "SELECT asignacion.id_asignacion, usuario.nombre, reporte.titulo, reporte.laboratorio, reporte.reporta, reporte.descripcion, reporte.fecha
+        FROM asignacion
+        INNER JOIN usuario ON asignacion.id_usuario = usuario.id_usuario
+        INNER JOIN reporte ON asignacion.id_reporte = reporte.id_reporte
+        WHERE asignacion.id_usuario = $id_usuario";
+$resultado = mysqli_query($connection, $sql);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,8 +59,38 @@ if (empty($_SESSION["id"])) {
                 <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
               </div>';
         }
-        ?>
+        ?>        
     </div>
+    <div class="container">
+        <h1>Asignaciones del usuario</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID Asignación</th>
+                    <th>Nombre</th>
+                    <th>Título</th>
+                    <th>Laboratorio</th>
+                    <th>Reporta</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row = mysqli_fetch_assoc($resultado)) { ?>
+                    <tr>
+                        <td><?php echo $row['id_asignacion']; ?></td>
+                        <td><?php echo $row['nombre']; ?></td>
+                        <td><?php echo $row['titulo']; ?></td>
+                        <td><?php echo $row['laboratorio']; ?></td>
+                        <td><?php echo $row['reporta']; ?></td>
+                        <td><?php echo $row['descripcion']; ?></td>
+                        <td><?php echo $row['fecha']; ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+
 </body>
 
 </html>
