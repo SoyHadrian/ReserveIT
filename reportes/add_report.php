@@ -23,24 +23,24 @@ if (isset($_POST['submit'])) {
 
     if ($result) {
         $id_reporte = mysqli_insert_id($connection);
-    
-        // Consulta para encontrar al usuario con menos asignaciones "En curso" entre los usuarios con rol "Alumno"
+
+        // Consulta para encontrar al usuario con menos asignaciones "En curso" entre los usuarios con rol "Prestante de servicio social"
         $sql = "SELECT u.id_usuario, COUNT(a.id_usuario) AS asignaciones
                 FROM usuario u
                 LEFT JOIN asignacion a ON u.id_usuario = a.id_usuario AND a.estado = 'En curso'
-                WHERE u.rol = 'Alumno'
+                WHERE u.rol = 'Prestante de servicio social'
                 GROUP BY u.id_usuario
                 ORDER BY asignaciones ASC, u.nombre ASC
                 LIMIT 1";
         $result = mysqli_query($connection, $sql);
-    
+
         if ($result && mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
             $id_usuario = $row['id_usuario'];
-    
+
             $sql = "INSERT INTO asignacion (id_usuario, id_reporte, prioridad, estado) VALUES ('$id_usuario', '$id_reporte', '$prioridad', 'En curso')";
             $result = mysqli_query($connection, $sql);
-    
+
             if ($result) {
                 header("Location: reportes.php?msg=Nuevo reporte y asignación creados");
             } else {
@@ -50,16 +50,16 @@ if (isset($_POST['submit'])) {
             // Si no se encontraron usuarios con asignaciones "En curso" y rol "Alumno", asignar al primer usuario con rol "Alumno" alfabéticamente
             $sql = "SELECT id_usuario
                     FROM usuario
-                    WHERE rol = 'Alumno'
+                    WHERE rol = 'Prestante de servicio social'
                     ORDER BY nombre ASC
                     LIMIT 1";
             $result = mysqli_query($connection, $sql);
             $row = mysqli_fetch_assoc($result);
             $id_usuario = $row['id_usuario'];
-    
+
             $sql = "INSERT INTO asignacion (id_usuario, id_reporte, prioridad, estado) VALUES ('$id_usuario', '$id_reporte', '$prioridad', 'En curso')";
             $result = mysqli_query($connection, $sql);
-    
+
             if ($result) {
                 header("Location: reportes.php?msg=Nuevo reporte y asignación creados");
             } else {
@@ -104,7 +104,7 @@ if (isset($_POST['submit'])) {
     </nav>
 
     <div class="container">
-    <div class="container d-flex justify-content-center">
+        <div class="container d-flex justify-content-center">
             <form action="" method="post" style="width: 1000px; min-width: 300px;">
                 <div class="row mb-3">
                     <div class="col">

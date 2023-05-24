@@ -35,7 +35,6 @@ if (empty($_SESSION["id"])) {
     </header>
     <div class="content2">
         <ul class="nav-links">
-            <li><a href="../pages/asignados.php">Asignados</a></li>
             <li><a href="../laboratorios/laboratorios.php">Laboratorios</a></li>
             <li><a href="../usuarios/usuarios.php">Usuarios</a></li>
             <li><a href="../reportes/reportes.php">Reportes</a></li>
@@ -52,7 +51,7 @@ if (empty($_SESSION["id"])) {
                     ' . $_SESSION['success_msg'] . '
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>';
-            unset($_SESSION['success_msg']); 
+            unset($_SESSION['success_msg']);
         }
 
         if (isset($_SESSION['error_msg'])) {
@@ -60,7 +59,7 @@ if (empty($_SESSION["id"])) {
                     ' . $_SESSION['error_msg'] . '
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>';
-            unset($_SESSION['error_msg']); 
+            unset($_SESSION['error_msg']);
         }
         ?>
         <a href="../reportes/add_report.php" class="btn btn-dark mb-3 fs-6">Agregar Reporte</a>
@@ -94,7 +93,7 @@ if (empty($_SESSION["id"])) {
                         <td style="width: 500px;"><?php echo $row['descripcion'] ?></td>
                         <td><?php echo $row['nombre_laboratorio'] ?></td>
                         <td><?php echo $row['fecha'] ?></td>
-                        <td><?php echo $row['prioridad'] ?></td> 
+                        <td><?php echo $row['prioridad'] ?></td>
                         <td style="width: 200px;">
                             <a href="edit_report.php?id=<?php echo $row['id_reporte'] ?>" class="link-dark"><i class="bi bi-pencil-square"></i></a>
                             <a href="delete_report.php?id=<?php echo $row['id_reporte'] ?>" class="link-dark"><i class="bi bi-trash-fill"></i></a>
