@@ -6,7 +6,7 @@ if (empty($_SESSION["id"])) {
 ?>
 <?php
 include "../db/db_connection.php";
-$id = $_GET['id'];
+$id = isset($_GET['id']) ? $_GET['id'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,6 +49,11 @@ $id = $_GET['id'];
         WHERE r.id_reporte = $id";
         $result = mysqli_query($connection, $sql);
         $row =  mysqli_fetch_assoc($result);
+
+        $sqlPrioridad = "SELECT prioridad FROM asignacion WHERE id_reporte = $id";
+        $resultPrioridad = mysqli_query($connection, $sqlPrioridad);
+        $rowPrioridad = mysqli_fetch_assoc($resultPrioridad);
+        $prioridad = $rowPrioridad['prioridad'];
         ?>
         <div class="container d-flex justify-content-center">
             <form action="" method="post" style="width: 1000px; min-width: 300px;">
@@ -73,6 +78,13 @@ $id = $_GET['id'];
                     <div class="col">
                         <label class="form-label">Laboratorio de ocurrencia:</label>
                         <input disabled type="text" class="form-control" name="titulo" value="<?php echo $row['nombre_laboratorio'] ?>">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label">Prioridad:</label>
+                        <input disabled type="text" class="form-control" name="prioridad" value="<?php echo $prioridad ?>">
                     </div>
                 </div>
 

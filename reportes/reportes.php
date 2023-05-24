@@ -46,12 +46,21 @@ if (empty($_SESSION["id"])) {
     <div class="contenedor">
 
         <?php
-        if (isset($_GET['msg'])) {
-            $msg = $_GET['msg'];
-            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                ' . $msg . '
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>';
+
+        if (isset($_SESSION['success_msg'])) {
+            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                    ' . $_SESSION['success_msg'] . '
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            unset($_SESSION['success_msg']); 
+        }
+
+        if (isset($_SESSION['error_msg'])) {
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    ' . $_SESSION['error_msg'] . '
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            unset($_SESSION['error_msg']); 
         }
         ?>
         <a href="../reportes/add_report.php" class="btn btn-dark mb-3 fs-6">Agregar Reporte</a>

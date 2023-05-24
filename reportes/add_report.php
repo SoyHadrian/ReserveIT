@@ -22,27 +22,50 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($connection, $sql);
 
     if ($result) {
-            $id_reporte = mysqli_insert_id($connection);
-        
-            $sql = "SELECT id_usuario, COUNT(*) AS asignaciones FROM asignacion WHERE estado = 'En curso' GROUP BY id_usuario ORDER BY asignaciones ASC LIMIT 1";
-            $result = mysqli_query($connection, $sql);
+        $id_reporte = mysqli_insert_id($connection);
+    
+        // Consulta para encontrar al usuario con menos asignaciones "En curso" entre los usuarios con rol "Alumno"
+        $sql = "SELECT u.id_usuario, COUNT(a.id_usuario) AS asignaciones
+                FROM usuario u
+                LEFT JOIN asignacion a ON u.id_usuario = a.id_usuario AND a.estado = 'En curso'
+                WHERE u.rol = 'Alumno'
+                GROUP BY u.id_usuario
+                ORDER BY asignaciones ASC, u.nombre ASC
+                LIMIT 1";
+        $result = mysqli_query($connection, $sql);
+    
+        if ($result && mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
             $id_usuario = $row['id_usuario'];
-        
+    
             $sql = "INSERT INTO asignacion (id_usuario, id_reporte, prioridad, estado) VALUES ('$id_usuario', '$id_reporte', '$prioridad', 'En curso')";
             $result = mysqli_query($connection, $sql);
-        
+    
             if ($result) {
                 header("Location: reportes.php?msg=Nuevo reporte y asignación creados");
             } else {
                 echo "Failed: " . mysqli_error($connection);
             }
         } else {
-            echo "Failed: " . mysqli_error($connection);
-    }
-
-    if ($result) {
-        header("Location: reportes.php?msg=Nuevo reporte creado");
+            // Si no se encontraron usuarios con asignaciones "En curso" y rol "Alumno", asignar al primer usuario con rol "Alumno" alfabéticamente
+            $sql = "SELECT id_usuario
+                    FROM usuario
+                    WHERE rol = 'Alumno'
+                    ORDER BY nombre ASC
+                    LIMIT 1";
+            $result = mysqli_query($connection, $sql);
+            $row = mysqli_fetch_assoc($result);
+            $id_usuario = $row['id_usuario'];
+    
+            $sql = "INSERT INTO asignacion (id_usuario, id_reporte, prioridad, estado) VALUES ('$id_usuario', '$id_reporte', '$prioridad', 'En curso')";
+            $result = mysqli_query($connection, $sql);
+    
+            if ($result) {
+                header("Location: reportes.php?msg=Nuevo reporte y asignación creados");
+            } else {
+                echo "Failed: " . mysqli_error($connection);
+            }
+        }
     } else {
         echo "Failed: " . mysqli_error($connection);
     }
