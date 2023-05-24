@@ -2,9 +2,9 @@
 session_start();
 if (empty($_SESSION["id"])) {
     header("location: ../index.php");
-} elseif ($_SESSION["rol"] != "Administrador") {
+} elseif ($_SESSION["rol"] != "Administrador" && $_SESSION["rol"] != "Prestante de servicio social") {
     header("location: ../user.php");
-} 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +36,7 @@ if (empty($_SESSION["id"])) {
     </header>
     <div class="content2">
         <ul class="nav-links">
-            <li><a href="../horarios/horarios.php">Horarios</a></li>
+            <!-- <li><a href="../horarios/horarios.php">Horarios</a></li> -->
             <li><a href="../laboratorios/laboratorios.php">Laboratorios</a></li>
             <li><a href="../usuarios/usuarios.php">Usuarios</a></li>
             <li><a href="../reportes/reportes.php">Reportes</a></li>
@@ -45,78 +45,79 @@ if (empty($_SESSION["id"])) {
     </div>
     <div class="contenedor col-xs-12 col-sm-12 col-md-12">
         <div class="table-responsive">
-        <table class="table table-hover text-center fs-6">
-            <thead class="table-dark" style="vertical-align: middle;">
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Rol</th>
-                    <th scope="col">Título</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Laboratorio</th>
-                    <th scope="col">Prioridad</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                include "../db/db_connection.php";
-                $sql = "SELECT u.nombre, u.rol, r.titulo, r.descripcion, r.laboratorio, a.prioridad, a.estado, a.id_asignacion
+            <table class="table table-hover text-center fs-6">
+                <thead class="table-dark" style="vertical-align: middle;">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Laboratorio</th>
+                        <th scope="col">Prioridad</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    include "../db/db_connection.php";
+                    $sql = "SELECT u.nombre, u.rol, r.titulo, r.descripcion, r.laboratorio, a.prioridad, a.estado, a.id_asignacion, laboratorio.nombre AS nombre_laboratorio
                         FROM asignacion a
                         INNER JOIN usuario u ON a.id_usuario = u.id_usuario
-                        INNER JOIN reporte r ON a.id_reporte = r.id_reporte";
-                $result = mysqli_query($connection, $sql);
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $prioridadColor = '';
-                    $estadoColor = '';
+                        INNER JOIN reporte r ON a.id_reporte = r.id_reporte
+                        INNER JOIN laboratorio ON r.laboratorio = laboratorio.id_laboratorio";
+                    $result = mysqli_query($connection, $sql);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $prioridadColor = '';
+                        $estadoColor = '';
 
-                    switch ($row['prioridad']) {
-                        case 1:
-                            $prioridadColor = 'red';
-                            break;
-                        case 2:
-                            $prioridadColor = 'orange';
-                            break;
-                        case 3:
-                            $prioridadColor = 'yellow';
-                            break;
-                        default:
-                            $prioridadColor = 'inherit';
-                            break;
-                    }
+                        switch ($row['prioridad']) {
+                            case 1:
+                                $prioridadColor = 'red';
+                                break;
+                            case 2:
+                                $prioridadColor = 'orange';
+                                break;
+                            case 3:
+                                $prioridadColor = 'yellow';
+                                break;
+                            default:
+                                $prioridadColor = 'inherit';
+                                break;
+                        }
 
-                    switch ($row['estado']) {
-                        case 'En curso':
-                            $estadoColor = 'green';
-                            break;
-                        case 'Finalizado':
-                            $estadoColor = 'blue';
-                            break;
-                        default:
-                            $estadoColor = 'inherit';
-                            break;
+                        switch ($row['estado']) {
+                            case 'En curso':
+                                $estadoColor = 'green';
+                                break;
+                            case 'Finalizado':
+                                $estadoColor = 'blue';
+                                break;
+                            default:
+                                $estadoColor = 'inherit';
+                                break;
+                        }
+                    ?>
+                        <tr>
+                            <td><?php echo $row['nombre'] ?></td>
+                            <td><?php echo $row['rol'] ?></td>
+                            <td><?php echo $row['titulo'] ?></td>
+                            <td><?php echo $row['descripcion'] ?></td>
+                            <td><?php echo $row['nombre_laboratorio'] ?></td>
+                            <td style="background-color: <?php echo $prioridadColor; ?>"><strong><?php echo $row['prioridad'] ?></strong></td>
+                            <td style="background-color: <?php echo $estadoColor; ?>"><strong><span style="color: white;"><?php echo $row['estado'] ?></span></strong></td>
+                            <td>
+                                <form method="POST">
+                                    <input type="hidden" name="id_asignacion" value="<?php echo $row['id_asignacion'] ?>">
+                                    <button type="submit" class="btn btn-danger btn-eliminar" data-id="<?php echo $row['id_asignacion'] ?>">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php
                     }
-                ?>
-                    <tr>
-                        <td><?php echo $row['nombre'] ?></td>
-                        <td><?php echo $row['rol'] ?></td>
-                        <td><?php echo $row['titulo'] ?></td>
-                        <td><?php echo $row['descripcion'] ?></td>
-                        <td><?php echo $row['laboratorio'] ?></td>
-                        <td style="background-color: <?php echo $prioridadColor; ?>"><strong><?php echo $row['prioridad'] ?></strong></td>
-                        <td style="background-color: <?php echo $estadoColor; ?>"><strong><span style="color: white;"><?php echo $row['estado'] ?></span></strong></td>
-                        <td>
-                            <form method="POST">
-                                <input type="hidden" name="id_asignacion" value="<?php echo $row['id_asignacion'] ?>">
-                                <button type="submit" class="btn btn-danger btn-eliminar" data-id="<?php echo $row['id_asignacion'] ?>">Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php
-                }
-                ?>
-            </tbody>
-        </table>
+                    ?>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -124,25 +125,27 @@ if (empty($_SESSION["id"])) {
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
-  $('table').on('click', '.btn-eliminar', function() {
-    var idAsignacion = $(this).data('id');
-    if (confirm('¿Estás seguro de que deseas eliminar este registro?')) {
-      $.ajax({
-        url: 'eliminar_registro.php',
-        method: 'POST',
-        data: { id_asignacion: idAsignacion },
-        success: function(response) {
-          alert(response);
-          $(this).closest('tr').remove();
-        },
-        error: function() {
-          alert('Error al eliminar el registro');
-        }
-      });
-    }
-  });
-});
+    $(document).ready(function() {
+        $('table').on('click', '.btn-eliminar', function() {
+            var idAsignacion = $(this).data('id');
+            if (confirm('¿Estás seguro de que deseas eliminar este registro?')) {
+                $.ajax({
+                    url: 'eliminar_registro.php',
+                    method: 'POST',
+                    data: {
+                        id_asignacion: idAsignacion
+                    },
+                    success: function(response) {
+                        alert(response);
+                        $(this).closest('tr').remove();
+                    },
+                    error: function() {
+                        alert('Error al eliminar el registro');
+                    }
+                });
+            }
+        });
+    });
 </script>
 
 </html>

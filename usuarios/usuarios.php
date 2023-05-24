@@ -2,6 +2,8 @@
 session_start();
 if (empty($_SESSION["id"])) {
     header("location: ../index.php");
+} elseif ($_SESSION["rol"] != "Administrador" && $_SESSION["rol"] != "Prestante de servicio social") {
+    header("location: ../user.php");
 }
 ?>
 <!DOCTYPE html>
@@ -36,7 +38,6 @@ if (empty($_SESSION["id"])) {
     </header>
     <div class="content2">
         <ul class="nav-links">
-            <li><a href="../pages/asignados.php">Asignados</a></li>
             <li><a href="../laboratorios/laboratorios.php">Laboratorios</a></li>
             <li><a href="../usuarios/usuarios.php">Usuarios</a></li>
             <li><a href="../reportes/reportes.php">Reportes</a></li>

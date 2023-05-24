@@ -1,10 +1,19 @@
 <?php
 session_start();
-if (!empty($_SESSION["id"])) {
+if (empty($_SESSION["id"])) {
     header("location: ../index.php");
-} elseif ($_SESSION["rol"] != "Administrador") {
+} elseif ($_SESSION["rol"] != "Administrador" && $_SESSION["rol"] != "Prestante de servicio social") {
     header("location: ../user.php");
 }
+$id_usuario = $_SESSION["id"];
+include "../db/db_connection.php";
+$sql = "SELECT asignacion.id_asignacion, usuario.nombre, reporte.titulo, laboratorio.nombre AS nombre_laboratorio, reporte.reporta, reporte.descripcion, reporte.fecha
+FROM asignacion
+INNER JOIN usuario ON asignacion.id_usuario = usuario.id_usuario
+INNER JOIN reporte ON asignacion.id_reporte = reporte.id_reporte
+INNER JOIN laboratorio ON reporte.laboratorio = laboratorio.id_laboratorio
+WHERE asignacion.id_usuario = $id_usuario";
+$resultado = mysqli_query($connection, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,11 +45,41 @@ if (!empty($_SESSION["id"])) {
     </header>
     <div class="content2">
         <ul class="nav-links">
-            <li><a href="asignados.php">Asignados</a></li>
             <li><a href="../laboratorios/laboratorios.php">Laboratorios</a></li>
             <li><a href="../usuarios/usuarios.php">Usuarios</a></li>
             <li><a href="../reportes/reportes.php">Reportes</a></li>
+            <li><a href="../asignaciones/asignaciones.php">Asignaciones</a></li>
         </ul>
+    </div>
+
+    <div class="container">
+        <h1>Asignaciones del usuario</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID Asignación</th>
+                    <!--<th>Nombre</th>-->
+                    <th>Título</th>
+                    <th>Laboratorio</th>
+                    <!--<th>Reporta</th>-->
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row = mysqli_fetch_assoc($resultado)) { ?>
+                    <tr>
+                        <td><?php echo $row['id_asignacion']; ?></td>
+                        <!--<td><?php /*echo $row['nombre']; */ ?></td>-->
+                        <td><?php echo $row['titulo']; ?></td>
+                        <td><?php echo $row['nombre_laboratorio']; ?></td>
+                        <!--<td><?php /*echo $row['reporta']; */ ?></td>-->
+                        <td><?php echo $row['descripcion']; ?></td>
+                        <td><?php echo $row['fecha']; ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
     </div>
 </body>
 
