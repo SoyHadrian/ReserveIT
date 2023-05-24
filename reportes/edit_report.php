@@ -2,6 +2,8 @@
 session_start();
 if (empty($_SESSION["id"])) {
     header("location: ../index.php");
+} elseif ($_SESSION["rol"] != "Administrador" && $_SESSION["rol"] != "Prestante de servicio social") {
+    header("location: ../user.php");
 }
 ?>
 <?php
@@ -144,7 +146,7 @@ if (isset($_POST['submit'])) {
                         <option value="2">2 (Media)</option>
                         <option value="3">3 (Baja)</option>
                     </select>
-                </div>            
+                </div>
 
                 <div>
                     <button type="submit" class="btn btn-success" name="submit">Editar</button>

@@ -18,7 +18,7 @@
         </div>
         <nav>
             <div class="content">
-                <div class="left">
+                <div class="container-fluid">
                     <ul class="nav-links">
                         <!-- <li><a href="horario.php">Horarios</a></li> -->
                         <li><a href="labs.php">Laboratorios</a></li>

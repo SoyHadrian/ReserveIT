@@ -2,6 +2,8 @@
 session_start();
 if (empty($_SESSION["id"])) {
     header("location: ../index.php");
+} elseif ($_SESSION["rol"] != "Administrador" && $_SESSION["rol"] != "Prestante de servicio social") {
+    header("location: ../user.php");
 }
 
 include "../db/db_connection.php";

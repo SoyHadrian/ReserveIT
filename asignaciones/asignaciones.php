@@ -2,7 +2,7 @@
 session_start();
 if (empty($_SESSION["id"])) {
     header("location: ../index.php");
-} elseif ($_SESSION["rol"] != "Administrador") {
+} elseif ($_SESSION["rol"] != "Administrador" && $_SESSION["rol"] != "Prestante de servicio social") {
     header("location: ../user.php");
 }
 ?>
@@ -61,10 +61,11 @@ if (empty($_SESSION["id"])) {
                 <tbody>
                     <?php
                     include "../db/db_connection.php";
-                    $sql = "SELECT u.nombre, u.rol, r.titulo, r.descripcion, r.laboratorio, a.prioridad, a.estado, a.id_asignacion
+                    $sql = "SELECT u.nombre, u.rol, r.titulo, r.descripcion, r.laboratorio, a.prioridad, a.estado, a.id_asignacion, laboratorio.nombre AS nombre_laboratorio
                         FROM asignacion a
                         INNER JOIN usuario u ON a.id_usuario = u.id_usuario
-                        INNER JOIN reporte r ON a.id_reporte = r.id_reporte";
+                        INNER JOIN reporte r ON a.id_reporte = r.id_reporte
+                        INNER JOIN laboratorio ON r.laboratorio = laboratorio.id_laboratorio";
                     $result = mysqli_query($connection, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
                         $prioridadColor = '';
@@ -102,7 +103,7 @@ if (empty($_SESSION["id"])) {
                             <td><?php echo $row['rol'] ?></td>
                             <td><?php echo $row['titulo'] ?></td>
                             <td><?php echo $row['descripcion'] ?></td>
-                            <td><?php echo $row['laboratorio'] ?></td>
+                            <td><?php echo $row['nombre_laboratorio'] ?></td>
                             <td style="background-color: <?php echo $prioridadColor; ?>"><strong><?php echo $row['prioridad'] ?></strong></td>
                             <td style="background-color: <?php echo $estadoColor; ?>"><strong><span style="color: white;"><?php echo $row['estado'] ?></span></strong></td>
                             <td>

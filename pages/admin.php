@@ -2,16 +2,17 @@
 session_start();
 if (empty($_SESSION["id"])) {
     header("location: ../index.php");
-} /*elseif ($_SESSION["rol"] != "Administrador" | $_SESSION["rol"] != "Prestante de servicio social") {
+} elseif ($_SESSION["rol"] != "Administrador" && $_SESSION["rol"] != "Prestante de servicio social") {
     header("location: ../user.php");
-}*/
+}
 $id_usuario = $_SESSION["id"];
 include "../db/db_connection.php";
-$sql = "SELECT asignacion.id_asignacion, usuario.nombre, reporte.titulo, reporte.laboratorio, reporte.reporta, reporte.descripcion, reporte.fecha
-        FROM asignacion
-        INNER JOIN usuario ON asignacion.id_usuario = usuario.id_usuario
-        INNER JOIN reporte ON asignacion.id_reporte = reporte.id_reporte
-        WHERE asignacion.id_usuario = $id_usuario";
+$sql = "SELECT asignacion.id_asignacion, usuario.nombre, reporte.titulo, laboratorio.nombre AS nombre_laboratorio, reporte.reporta, reporte.descripcion, reporte.fecha
+FROM asignacion
+INNER JOIN usuario ON asignacion.id_usuario = usuario.id_usuario
+INNER JOIN reporte ON asignacion.id_reporte = reporte.id_reporte
+INNER JOIN laboratorio ON reporte.laboratorio = laboratorio.id_laboratorio
+WHERE asignacion.id_usuario = $id_usuario";
 $resultado = mysqli_query($connection, $sql);
 ?>
 <!DOCTYPE html>
@@ -44,10 +45,10 @@ $resultado = mysqli_query($connection, $sql);
     </header>
     <div class="content2">
         <ul class="nav-links">
-            <li><a href="../asignaciones/asignaciones.php">Asignados</a></li>
             <li><a href="../laboratorios/laboratorios.php">Laboratorios</a></li>
             <li><a href="../usuarios/usuarios.php">Usuarios</a></li>
             <li><a href="../reportes/reportes.php">Reportes</a></li>
+            <li><a href="../asignaciones/asignaciones.php">Asignaciones</a></li>
         </ul>
     </div>
 
@@ -57,10 +58,10 @@ $resultado = mysqli_query($connection, $sql);
             <thead>
                 <tr>
                     <th>ID Asignación</th>
-                    <th>Nombre</th>
+                    <!--<th>Nombre</th>-->
                     <th>Título</th>
                     <th>Laboratorio</th>
-                    <th>Reporta</th>
+                    <!--<th>Reporta</th>-->
                     <th>Descripción</th>
                     <th>Fecha</th>
                 </tr>
@@ -69,10 +70,10 @@ $resultado = mysqli_query($connection, $sql);
                 <?php while ($row = mysqli_fetch_assoc($resultado)) { ?>
                     <tr>
                         <td><?php echo $row['id_asignacion']; ?></td>
-                        <td><?php echo $row['nombre']; ?></td>
+                        <!--<td><?php /*echo $row['nombre']; */ ?></td>-->
                         <td><?php echo $row['titulo']; ?></td>
-                        <td><?php echo $row['laboratorio']; ?></td>
-                        <td><?php echo $row['reporta']; ?></td>
+                        <td><?php echo $row['nombre_laboratorio']; ?></td>
+                        <!--<td><?php /*echo $row['reporta']; */ ?></td>-->
                         <td><?php echo $row['descripcion']; ?></td>
                         <td><?php echo $row['fecha']; ?></td>
                     </tr>
