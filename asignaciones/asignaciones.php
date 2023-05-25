@@ -28,6 +28,8 @@ if (empty($_SESSION["id"])) {
         <nav>
             <div class="content">
                 <ul class="nav-links">
+                    <li><a>Asignaciones</a></li>
+
                     <li><a><?php echo $_SESSION["nombre"] ?></a></li>
                 </ul>
             </div>
