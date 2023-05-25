@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "reserveit";
+$dbname = "reserveit2";
 
 $connection = mysqli_connect($servername, $username, $password, $dbname);
 
