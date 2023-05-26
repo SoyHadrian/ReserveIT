@@ -23,9 +23,9 @@ if (empty($_SESSION["id"])) {
             <a><img src="images/logo.png" alt="Logo de la compañía"></a>
         </div>
         <nav>
-            <div class="content" >
+            <div class="content">
                 <ul class="nav-links">
-                    <li><a href="#">Horarios</a></li>
+                    <!--  <li><a href="#">Horarios</a></li>-->
                     <li><a href="labs.php">Laboratorios</a></li>
                 </ul>
 

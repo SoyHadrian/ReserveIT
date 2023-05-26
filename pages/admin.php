@@ -7,10 +7,11 @@ if (empty($_SESSION["id"])) {
 }
 $id_usuario = $_SESSION["id"];
 include "../db/db_connection.php";
-$sql = "SELECT asignacion.id_asignacion, asignacion.prioridad, asignacion.estado, usuario.nombre, reporte.titulo, reporte.laboratorio, reporte.reporta, reporte.descripcion, reporte.fecha
+$sql = "SELECT asignacion.id_asignacion, asignacion.prioridad, asignacion.estado, usuario.nombre, reporte.titulo, reporte.laboratorio, reporte.reporta, reporte.descripcion, reporte.fecha, laboratorio.nombre AS nombre_laboratorio
         FROM asignacion
         INNER JOIN usuario ON asignacion.id_usuario = usuario.id_usuario
         INNER JOIN reporte ON asignacion.id_reporte = reporte.id_reporte
+        INNER JOIN laboratorio ON reporte.laboratorio = laboratorio.id_laboratorio
         WHERE asignacion.id_usuario = $id_usuario AND asignacion.estado = 'En curso'";
 $resultado = mysqli_query($connection, $sql);
 ?>
@@ -105,7 +106,7 @@ $resultado = mysqli_query($connection, $sql);
                             <td><?php echo $row['nombre']; ?></td>
                             <td><?php echo $row['titulo']; ?></td>
                             <td><?php echo $row['descripcion']; ?></td>
-                            <td><?php echo $row['laboratorio']; ?></td>
+                            <td><?php echo $row['nombre_laboratorio']; ?></td>
                             <td><?php echo $row['fecha']; ?></td>
                             <td style="background-color: <?php echo $prioridadColor; ?>"><strong><?php echo $row['prioridad'] ?></strong></td>
                             <td style="background-color: <?php echo $estadoColor; ?>"><strong><span style="color: white;"><?php echo $row['estado'] ?></span></strong></td>

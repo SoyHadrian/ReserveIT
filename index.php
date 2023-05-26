@@ -37,14 +37,40 @@
         <a href="login.php" class="btn" style="text-decoration: none;"><button class="btn btn-rounded">Iniciar
                 sesión</button></a>
     </header>
-    <div class="container-fluid" style="padding: 10px;">
+    <div class="container-fluid p-3" style="padding: 10px;">
         <div class="card text-center" style="width: auto;">
             <div class="card-body">
                 <h5 class="card-title">ReserveIT</h5>
-                <h6 class="card-subtitle mb-2 text-muted">¿Qué es ReserveIT?</h6>
-                <p class="card-text">ReserveIT es un sistema de gestión de laboratorios que permite un control eficiente y en tiempo real del uso y mantenimiento de los mismos.</p>
+                <h5 class="card-title text-muted">¿Qué es ReserveIT?</h5>
+                <p class="card-text">ReserveIT es un sistema de gestión de laboratorios que permite un control eficiente y en tiempo real del mantenimiento de los mismos.</p>
                 <a href="#" class="card-link"></a>
                 <a href="#" class="card-link"></a>
+            </div>
+        </div>
+        <div class="row g-2 p-3">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Reporta</h5>
+                        <p class="card-text">Reporta incidencias desde tu dispositivo desde cualquier lugar.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Ahorra tiempo</h5>
+                        <p class="card-text">No es necesario un tramite complejo para resolver los problemas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body text-end">
+                        <h5 class="card-title">Da mantenimiento</h5>
+                        <p class="card-text">Los reportes son revisados para corregir cualquier circunstancia fuera de lo normal.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

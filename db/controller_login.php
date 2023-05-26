@@ -12,7 +12,7 @@ if (!empty($_POST["btningresar"])) {
             $_SESSION["nombre"] = $datos->nombre;
             $_SESSION["rol"] = $datos->rol;
 
-            if ($_SESSION["rol"] == "Alumno") {
+            if ($_SESSION["rol"] == "Alumno" | ($_SESSION["rol"] == "Profesor")) {
                 header("location:user.php");
             } elseif ($_SESSION["rol"] == "Administrador" | $_SESSION["rol"] == "Prestante de servicio social") {
                 header("location:pages/admin.php");
